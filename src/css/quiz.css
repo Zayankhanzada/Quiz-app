@@ -1,0 +1,35 @@
+body{
+    font-family: "Open Sans", sans-serif;
+    
+
+}
+
+.bg-brown{
+    background:#5C5248;
+}
+/* font family */
+
+.fw-mono{
+    font-family: "Cascadia Mono", sans-serif!important;
+  }
+/* colors and backgrounds */
+
+
+.modal-bg{  
+ background: #E3DAC9;
+ 
+}
+
+/* margins and paddings */
+.pt-10{
+    padding-top: 100px;
+
+}
+
+.modal-footer .agree-button {
+    border: #6991c7;
+   }
+
+.modal-footer .agree-button:hover{
+ background: #6991c7 !important;
+}
