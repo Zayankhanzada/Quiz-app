@@ -1,0 +1,18 @@
+.sidebar{
+    width: 380px;
+    height: 90vh;
+}
+
+
+/* buttons stylings */
+.options button:hover{
+background: #343434!important;
+color: white!important;
+scale: 1.02;
+}
+.list-group-item-action:active{
+}
+.submit:hover{
+  background: white;  
+ color: #343434;
+}
