@@ -150,7 +150,7 @@ export default function Quizstart() {
                 >
                   <div className="d-flex w-100 align-items-center justify-content-between">
                     <strong className="mb-1">List group item heading</strong>
-                    <small><span class="badge text-bg-secondary">Status</span> </small>
+                    <small><span className="badge text-bg-secondary">Status</span> </small>
                   </div>
                   <div className="col-10 mb-1 small">
                     Some placeholder content in a paragraph below the heading
@@ -164,7 +164,7 @@ export default function Quizstart() {
                 >
                   <div className="d-flex w-100 align-items-center justify-content-between">
                     <strong className="mb-1">List group item heading</strong>
-                    <small className=""> <span class="badge text-bg-secondary">Status</span> </small>
+                    <small className=""> <span className="badge text-bg-secondary">Status</span> </small>
                   </div>
                   <div className="col-10 mb-1 small">
                     Some placeholder content in a paragraph below the heading
@@ -178,50 +178,7 @@ export default function Quizstart() {
                 >
                   <div className="d-flex w-100 align-items-center justify-content-between">
                     <strong className="mb-1">List group item heading</strong>
-                    <small><span class="badge text-bg-secondary">Status</span> </small>
-                  </div>
-                  <div className="col-10 mb-1 small">
-                    Some placeholder content in a paragraph below the heading
-                    and date.
-                  </div>
-                </a>
-                <a
-                  href="/quiz"
-                  className="list-group-item list-group-item-action py-3 lh-sm"
-                  aria-current="true"
-                  style={theme}
-                >
-                  <div className="d-flex w-100 align-items-center justify-content-between">
-                    <strong className="mb-1">List group item heading</strong>
-                    <small><span class="badge text-bg-secondary">Status</span> </small>
-                  </div>
-                  <div className="col-10 mb-1 small">
-                    Some placeholder content in a paragraph below the heading
-                    and date.
-                  </div>
-                </a>
-                <a
-                  href="/quiz"
-                  className="list-group-item list-group-item-action py-3 lh-sm"
-                  style={theme}
-                >
-                  <div className="d-flex w-100 align-items-center justify-content-between">
-                    <strong className="mb-1">List group item heading</strong>
-                    <small><span class="badge text-bg-secondary">Status</span> </small>
-                  </div>
-                  <div className="col-10 mb-1 small">
-                    Some placeholder content in a paragraph below the heading
-                    and date.
-                  </div>
-                </a>
-                <a
-                  href="/quiz"
-                  className="list-group-item list-group-item-action py-3 lh-sm"
-                  style={theme}
-                >
-                  <div className="d-flex w-100 align-items-center justify-content-between">
-                    <strong className="mb-1">List group item heading</strong>
-                    <small><span class="badge text-bg-secondary">Status</span> </small>
+                    <small><span className="badge text-bg-secondary">Status</span> </small>
                   </div>
                   <div className="col-10 mb-1 small">
                     Some placeholder content in a paragraph below the heading
@@ -236,7 +193,7 @@ export default function Quizstart() {
                 >
                   <div className="d-flex w-100 align-items-center justify-content-between">
                     <strong className="mb-1">List group item heading</strong>
-                    <small><span class="badge text-bg-secondary">Status</span> </small>
+                    <small><span className="badge text-bg-secondary">Status</span> </small>
                   </div>
                   <div className="col-10 mb-1 small">
                     Some placeholder content in a paragraph below the heading
@@ -250,7 +207,7 @@ export default function Quizstart() {
                 >
                   <div className="d-flex w-100 align-items-center justify-content-between">
                     <strong className="mb-1">List group item heading</strong>
-                    <small><span class="badge text-bg-secondary">Status</span> </small>
+                    <small><span className="badge text-bg-secondary">Status</span> </small>
                   </div>
                   <div className="col-10 mb-1 small">
                     Some placeholder content in a paragraph below the heading
@@ -264,7 +221,22 @@ export default function Quizstart() {
                 >
                   <div className="d-flex w-100 align-items-center justify-content-between">
                     <strong className="mb-1">List group item heading</strong>
-                    <small><span class="badge text-bg-secondary">Status</span> </small>
+                    <small><span className="badge text-bg-secondary">Status</span> </small>
+                  </div>
+                  <div className="col-10 mb-1 small">
+                    Some placeholder content in a paragraph below the heading
+                    and date.
+                  </div>
+                </a>
+                <a
+                  href="/quiz"
+                  className="list-group-item list-group-item-action py-3 lh-sm"
+                  aria-current="true"
+                  style={theme}
+                >
+                  <div className="d-flex w-100 align-items-center justify-content-between">
+                    <strong className="mb-1">List group item heading</strong>
+                    <small><span className="badge text-bg-secondary">Status</span> </small>
                   </div>
                   <div className="col-10 mb-1 small">
                     Some placeholder content in a paragraph below the heading
@@ -278,7 +250,7 @@ export default function Quizstart() {
                 >
                   <div className="d-flex w-100 align-items-center justify-content-between">
                     <strong className="mb-1">List group item heading</strong>
-                    <small><span class="badge text-bg-secondary">Status</span> </small>
+                    <small><span className="badge text-bg-secondary">Status</span> </small>
                   </div>
                   <div className="col-10 mb-1 small">
                     Some placeholder content in a paragraph below the heading
@@ -292,7 +264,7 @@ export default function Quizstart() {
                 >
                   <div className="d-flex w-100 align-items-center justify-content-between">
                     <strong className="mb-1">List group item heading</strong>
-                    <small><span class="badge text-bg-secondary">Status</span> </small>
+                    <small><span className="badge text-bg-secondary">Status</span> </small>
                   </div>
                   <div className="col-10 mb-1 small">
                     Some placeholder content in a paragraph below the heading
@@ -306,7 +278,35 @@ export default function Quizstart() {
                 >
                   <div className="d-flex w-100 align-items-center justify-content-between">
                     <strong className="mb-1">List group item heading</strong>
-                    <small><span class="badge text-bg-secondary">Status</span> </small>
+                    <small><span className="badge text-bg-secondary">Status</span> </small>
+                  </div>
+                  <div className="col-10 mb-1 small">
+                    Some placeholder content in a paragraph below the heading
+                    and date.
+                  </div>
+                </a>
+                <a
+                  href="/quiz"
+                  className="list-group-item list-group-item-action py-3 lh-sm"
+                  style={theme}
+                >
+                  <div className="d-flex w-100 align-items-center justify-content-between">
+                    <strong className="mb-1">List group item heading</strong>
+                    <small><span className="badge text-bg-secondary">Status</span> </small>
+                  </div>
+                  <div className="col-10 mb-1 small">
+                    Some placeholder content in a paragraph below the heading
+                    and date.
+                  </div>
+                </a>
+                <a
+                  href="/quiz"
+                  className="list-group-item list-group-item-action py-3 lh-sm"
+                  style={theme}
+                >
+                  <div className="d-flex w-100 align-items-center justify-content-between">
+                    <strong className="mb-1">List group item heading</strong>
+                    <small><span className="badge text-bg-secondary">Status</span> </small>
                   </div>
                   <div className="col-10 mb-1 small">
                     Some placeholder content in a paragraph below the heading
@@ -358,7 +358,7 @@ export default function Quizstart() {
             </button>
           </div>
           <div className=" mt-5">
-            <button type="button" class="btn btn-secondary submit" style={theme}>
+            <button type="button" className="btn btn-secondary submit" style={theme}>
               Submit Answer
             </button>
           </div>

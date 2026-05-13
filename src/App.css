@@ -1,66 +1,85 @@
-
-
+body {
+  background: #f1f5f9;
+}
 .App {
   text-align: center;
-  /* background: #1E1B4B; */
-  background-image: linear-gradient(to top, #a3bded 0%, #6991c7 100%);
+  /* background-image: linear-gradient(to top, #a3bded 0%, #6991c7 100%); */
 }
 
-  .App-logo {
+.App-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
-
-.text-white{
-  color:#F0FDFA!important
+.text-white {
+  color: #f0fdfa !important;
 }
 .App-header {
-
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.start-button {
-  border-radius: 5px;
-  background:  #44362F;
-  cursor: pointer;
+.cssbuttons-io-button {
+  /* Glass effect */
+  background-color:white;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color:#212121;
+  box-shadow: 
+  0 4px 10px rgba(243, 134, 243, 0.4),  /* start color glow */
+  0 8px 20px rgba(149, 140, 215, 0.3);  /* end color glow */
+
+  padding: 0.35em;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 
+  0 4px 10px rgba(243, 134, 243, 0.6),  /* start color glow */
+  0 8px 20px rgba(149, 140, 215, 0.4);  /* end color glow */
+
+  transition: all 0.3s ease;
+
+  letter-spacing: 0.05em;
+  height: 2.8em;
+}
+.cssbuttons-io-button:hover {
+  background: rgba(243, 134, 243, 0.6); /* slightly stronger glass */
+  box-shadow: 
+  0 4px 10px rgba(243, 134, 243, 0.6),  /* start color glow */
+  0 8px 20px rgba(149, 140, 215, 0.4);  /* end color glow */
+}
+.cssbuttons-io-button .icon {
+  height: 2.2em;
+  width: 2.2em;
+  box-shadow: 
+  0 4px 10px rgba(243, 134, 243, 0.6),  /* start color glow */
+  0 8px 20px rgba(149, 140, 215, 0.4);  /* end color glow */;
+  right: 0.3em;
+
+  transition: all 0.3s;
 }
 
-.start-button:after {
-  content: " ";
-  width: 0%;
-  height: 100%;
-  background:#6F4E37 ;
-  position: absolute;
-  transition: all 0.4s ease-in-out;
-  right: 0;
+.cssbuttons-io-button:hover .icon {
+  width: calc(100% - 0.6em);
+  display: flex!important;
+  transition: all 0.3s;
 }
 
-.start-button:hover::after {
-  right: auto;
-  left: 0;
-  width: 100%;
+.cssbuttons-io-button .icon svg {
+  width: 1.1em;
+  transition: transform 0.3s;
+  color: #7b52b9;
 }
 
-.start-button span {
-  padding: 10px 20px;
-  letter-spacing: 0.1em;
-  z-index: 20;
-  transition: all 0.3s ease-in-out;
+.cssbuttons-io-button:hover .icon svg {
+  transform: translateX(0.1em);
 }
 
-.start-button:hover span {
-  color: #183153;
-  animation: scaleUp 0.3s ease-in-out;
+.cssbuttons-io-button:active .icon {
+  transform: scale(0.95);
 }
-.btn-disagree:hover{
-  background: #DAC8AE;
+
+.btn-disagree:hover {
+  background: #dac8ae;
 }
 @keyframes scaleUp {
   0% {
