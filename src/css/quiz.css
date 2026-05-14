@@ -1,6 +1,6 @@
 body{
     font-family: "Open Sans", sans-serif;
-    background: linear-gradient(90deg, hsla(302, 82%, 76%, 1) 0%, hsla(258, 40%, 68%, 1) 100%);
+    /* background: linear-gradient(90deg, hsla(302, 82%, 76%, 1) 0%, hsla(258, 40%, 68%, 1) 100%); */
 
 }
 
@@ -11,9 +11,9 @@ body{
 .fw-mono{
     font-family: "Cascadia Mono", sans-serif!important;
   }
+
+
 /* colors and backgrounds */
-
-
 .modal-bg{  
     background: rgba(255, 255, 255, 0.2);
     border-radius: 16px;

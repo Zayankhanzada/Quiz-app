@@ -4,6 +4,33 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Quiz from "./Quiz";
 import Quizstart from "./Quizstart";
 
+function star(){
+  const starsContainer = document.getElementById("stars");
+
+for (let i = 0; i < 180; i++) {
+  const star = document.createElement("div");
+
+  const size =
+    Math.random() > 0.96
+      ? "lg"
+      : Math.random() > 0.7
+      ? "md"
+      : "sm";
+
+  star.className = `star ${size}`;
+
+  star.style.left = Math.random() * 100 + "%";
+  star.style.top = Math.random() * 100 + "%";
+
+  star.style.animationDuration =
+    2 + Math.random() * 6 + "s";
+
+  star.style.animationDelay =
+    Math.random() * 5 + "s";
+
+  starsContainer.appendChild(star);
+}
+}
 function App() {
   return (
     <BrowserRouter>
@@ -11,17 +38,19 @@ function App() {
         {/* HOME ROUTE */}
         <Route
           path="/"
-          element={
+          element={<>
+            <div className="stars" id="stars"></div>
             <div className="App">
-              <header className="App-header text-white d-flex flex-column align-items-center justify-content-center container">
+              
+              <header className="container App-header text-white d-flex flex-column align-items-center justify-content-center">
                 <img src={logo} className="App-logo" alt="logo" />
 
-                <h1 className="fw-normal text-dark my-5">
+                <h1 className="fw-normal text-white my-5">
                   Welcome To <span className="fw-bold">Quiz Board</span>, try
                   your Best!
                 </h1>
 
-            <Link to="/instructions" className=" cssbuttons-io-button  fs-5 border-0 d-flex align-items-center  overflow-hidden position-relative rounded-4 gap-3  px-5  text-decoration-none"> 
+            <Link to="/instructions" className="main-start-btn fs-5 border-0 d-flex align-items-center  overflow-hidden position-relative rounded-4 gap-3  px-5  text-decoration-none"> 
                 <span className="pe-3 fs-5 fw-medium">Let's Start</span>
                   <div className="icon bg-white position-absolute d-flex align-items-center justify-content-center ms-3 rounded-3">
                     <svg
@@ -40,6 +69,7 @@ function App() {
                 </Link>
               </header>
             </div>
+            </>
           }
         />
 
