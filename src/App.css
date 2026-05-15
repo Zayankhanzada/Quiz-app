@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap');
 body {
   background:#0D0D1A;
+  font-family:'Syne',sans-serif;  
 }
 .App {
   text-align: center;
@@ -7,7 +9,7 @@ body {
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 30vmin;
   pointer-events: none;
 }
 
@@ -15,14 +17,31 @@ body {
   color: #f0fdfa !important;
 }
 .App-header {
-  min-height: 100vh;
-  font-size: calc(10px + 2vmin);
+  max-height: 100vh;
+  min-height: auto;
 }
 
-/* =========================
-   REALISTIC SPACE BACKGROUND
-   ========================= */
+  .live-badge{
+    gap:6px;
+    background:rgba(108,99,255,.18);
+    color:#a5a0ff;
+    font-size:.75rem;
+    letter-spacing:.06em;
+    padding:.25rem .75rem;
+    border-radius:100px;
+    border:1px solid rgba(108,99,255,.3)}
 
+/* text styles */
+.gradient-text{
+  background: linear-gradient(135deg,#6C63FF,#FF6584);
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+/* space background*/
 .stars{
   position:fixed;
   inset:0;
