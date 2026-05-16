@@ -6,7 +6,8 @@ import { useEffect } from "react";
 import Quiz from "./Quiz";
 import Quizstart from "./Quizstart";
 
-function App() {
+function App() {  
+
 
   useEffect(() => {
     const starsContainer = document.getElementById("stars");
@@ -38,7 +39,6 @@ function App() {
       starsContainer.appendChild(star);
     }
   }, []);
-
   return (
     <BrowserRouter>
       <Routes>
@@ -51,39 +51,74 @@ function App() {
               <div className="stars" id="stars"></div>
               <div className="App">
                 <header className="container App-header text-white d-flex flex-column align-items-center justify-content-center my-5 pt-5">
-                  <span className="live-badge d-inline-flex align-items-center fw-semibold">Live-AI Quiz Platform</span>
+                  <span className="live-badge d-flex align-items-center fw-semibold">Live-AI Quiz Platform</span>
                   <img src={logo} className="App-logo " alt="logo" />
                   <h1 className="fw-normal text-white ">
                     Welcome To Our <span className="fw-bold gradient-text">Quiz Board</span>, try your Best!
                   </h1>
                   <p className="py-3 fs-6 fs-lg-5">Create & join real-time quizzes.<br />
                     Compete, learn, dominate the leaderboard.</p>
+                  <div className="d-flex flex-column flex-lg-row align-items-center gap-3">
 
-                  <Link
-                    to="/instructions"
-                    className="main-start-btn fs-5 border-0 d-flex align-items-center overflow-hidden position-relative rounded-4 gap-3 px-5 text-decoration-none"
-                  >
-                    <span className="pe-3 fs-5 fw-medium">
-                      Let's Dive! 😎
-                    </span>
 
-                    <div className="icon bg-white position-absolute d-flex align-items-center justify-content-center ms-3 rounded-3">
-                      <svg
-                        height="24"
-                        width="24"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M0 0h24v24H0z" fill="none"></path>
 
-                        <path
-                          d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
-                          fill="currentColor"
-                        ></path>
-                      </svg>
-                    </div>
-                  </Link>
+                    <Link to="/instructions" href="#" class="createbtn d-flex align-items-center rounded-pill lh-1 border-0 overflow-hidden text-nowrap fw-semibold text-decoration-none py-3 px-4 gap-3 text-white" >
+                      <span class="createbtn-icon-wrapper d-grid position-relative flex-shrink-0 bg-white overflow-hidden">
+                        <svg
+                          viewBox="0 0 14 15"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="createbtn-icon-svg"
+                          width="10"
+                        >
+                          <path
+                            d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
+                            fill="currentColor"
+                          ></path>
+                        </svg>
 
+                        <svg
+                          viewBox="0 0 14 15"
+                          fill="none"
+                          width="10"
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="createbtn-icon-svg createbtn-icon-svg--copy position-absolute"
+                        >
+                          <path
+                            d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
+                            fill="currentColor"
+                          ></path>
+                        </svg>
+                      </span>
+                      Create Quiz with AI
+                    </Link>
+
+                    <Link
+                      to="/instructions"
+                      className="main-start-btn bg-white fs-5 border-0 d-flex align-items-center overflow-hidden position-relative  gap-3 px-5 py-3 text-decoration-none rounded-pill"
+                      classNmae="l">
+                      <span className="pe-3 fs-5 fw-medium">
+                        Join the Quiz!
+                      </span>
+
+                      <div className="icon bg-white position-absolute d-flex align-items-center justify-content-center  rounded-pill">
+                        <svg
+                          height="24"
+                          width="24"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M0 0h24v24H0z" fill="none"></path>
+
+                          <path
+                            d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                            fill="currentColor"
+                          ></path>
+                        </svg>
+
+                      </div>
+                    </Link>
+                  </div>
                 </header>
               </div>
             </>

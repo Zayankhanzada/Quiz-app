@@ -42,10 +42,11 @@ body {
   color: transparent;
 }
 /* space background*/
+
 .stars{
   position:fixed;
   inset:0;
-  z-index:0;
+  z-index:-1;
   overflow:hidden;
   pointer-events:none;
 
@@ -168,31 +169,61 @@ body {
   }
 }
 
-/* homepage button */
+/* homepage buttons */
+
+/* create quiz btn  */
+ .createbtn {
+  cursor: pointer;
+  background:  linear-gradient(135deg,#6C63FF,#FF6584);
+  text-overflow: ellipsis;
+  transition: background 0.3s;
+}
+
+.createbtn-icon-wrapper {
+  width: 25px;
+  height: 25px;
+  color: #7808d0;
+  border-radius: 50%;
+  place-items: center;
+}
+
+.createbtn:hover {
+  background-color: #000;
+}
+
+.createbtn:hover .createbtn-icon-wrapper {
+  color: #000;
+}
+
+.createbtn-icon-svg--copy {
+  transform: translate(-150%, 150%);
+}
+
+.createbtn:hover .createbtn-icon-svg:first-child {
+  transition: transform 0.3s ease-in-out;
+  transform: translate(150%, -150%);
+}
+
+.createbtn:hover .createbtn-icon-svg--copy {
+  transition: transform 0.3s ease-in-out 0.1s;
+  transform: translate(0);
+}
+
 .main-start-btn {
-  /* Glass effect */
-  background-color:white;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   color:#212121;
   box-shadow: 
   0 4px 10px rgba(243, 134, 243, 0.4),  /* start color glow */
   0 8px 20px rgba(149, 140, 215, 0.3);  /* end color glow */
-
-  padding: 0.35em;
   backdrop-filter: blur(8px);
-  box-shadow: 
-  0 4px 10px rgba(243, 134, 243, 0.6),  /* start color glow */
-  0 8px 20px rgba(149, 140, 215, 0.4);  /* end color glow */
-  transition: all 0.3s ease;
+  transition: all 0.02s ease;
   letter-spacing: 0.05em;
   height: 2.8em;
+
 }
 .main-start-btn:hover {
-  background: rgba(243, 134, 243, 0.6); /* slightly stronger glass */
-  box-shadow: 
-  0 4px 10px rgba(243, 134, 243, 0.6),  /* start color glow */
-  0 8px 20px rgba(149, 140, 215, 0.4);  /* end color glow */
+  background:linear-gradient(135deg, #7F7FD5, #86A8E7, #FF6A88);
 }
 .main-start-btn .icon {
   height: 2.2em;
@@ -204,26 +235,24 @@ body {
 
   transition: all 0.3s;
 }
-
 .main-start-btn:hover .icon {
   width: calc(100% - 0.6em);
   display: flex!important;
   transition: all 0.3s;
 }
-
 .main-start-btn .icon svg {
   width: 1.1em;
   transition: transform 0.3s;
-  color: #7b52b9;
 }
-
 .main-start-btn:hover .icon svg {
   transform: translateX(0.1em);
 }
-
 .main-start-btn:active .icon {
   transform: scale(0.95);
 }
+
+
+
 
 .btn-disagree:hover {
   background: #dac8ae;
