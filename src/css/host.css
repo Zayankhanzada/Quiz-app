@@ -1,0 +1,7 @@
+/* relative values */
+.start-5{
+    left: 5%;
+}
+.modal-content{
+    background: rgba(30,30,64,0.82)!important;
+}

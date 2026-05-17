@@ -3,6 +3,13 @@ body {
   background:#0D0D1A;
   font-family:'Syne',sans-serif;  
 }
+h1,h2,h3{
+  font-family: 'DM Sans',sans-serif;
+}
+
+.fw-Syne{
+   font-family:'Syne',sans-serif;  
+}
 .App {
   text-align: center;
   /* background-image: linear-gradient(to top, #a3bded 0%, #6991c7 100%); */
@@ -250,7 +257,14 @@ body {
 .main-start-btn:active .icon {
   transform: scale(0.95);
 }
-
+.back-btn{
+  width: fit-content;
+}
+.back-btn:hover{
+ background: #e8e8e8;
+ color: #000!important; 
+ transition: all 0.01s smooth;
+}
 
 
 

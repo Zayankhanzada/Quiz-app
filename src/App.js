@@ -5,6 +5,7 @@ import { useEffect } from "react";
 
 import Quiz from "./Quiz";
 import Quizstart from "./Quizstart";
+import Host from "./Host";
 
 function App() {  
  const location=useLocation();
@@ -63,7 +64,7 @@ function App() {
 
 
 
-                    <Link to="/instructions" href="#" className="createbtn d-flex align-items-center rounded-pill lh-1 border-0 overflow-hidden text-nowrap fw-semibold text-decoration-none py-3 px-4 gap-3 text-white" >
+                    <Link to="/host" href="#" className="createbtn d-flex align-items-center rounded-pill lh-1 border-0 overflow-hidden text-nowrap fw-semibold text-decoration-none py-3 px-4 gap-3 text-white" >
                       <span className="createbtn-icon-wrapper d-grid position-relative flex-shrink-0 bg-white overflow-hidden">
                         <svg
                           viewBox="0 0 14 15"
@@ -127,6 +128,7 @@ function App() {
         />
 
         {/* QUIZ ROUTE */}
+        <Route path="/host" element={<Host/>}></Route>
         <Route path="/instructions" element={<Quiz />} />
 
         <Route path="/quiz" element={<Quizstart />} />
