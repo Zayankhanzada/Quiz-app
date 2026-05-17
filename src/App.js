@@ -1,18 +1,19 @@
 import logo from "./images/newlogo2.png";
 import "./App.css";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import {Routes, Route, Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
 import Quiz from "./Quiz";
 import Quizstart from "./Quizstart";
 
 function App() {  
-
-
+ const location=useLocation();
+  
   useEffect(() => {
+    if(location.pathname!=="/")return;
     const starsContainer = document.getElementById("stars");
 
-    // Prevent duplicate stars
+   if(!starsContainer) return;
     starsContainer.innerHTML = "";
 
     for (let i = 0; i < 180; i++) {
@@ -38,11 +39,11 @@ function App() {
 
       starsContainer.appendChild(star);
     }
-  }, []);
+  }, [location.pathname]);
+  
   return (
-    <BrowserRouter>
-      <Routes>
 
+      <Routes>
         {/* HOME ROUTE */}
         <Route
           path="/"
@@ -62,13 +63,13 @@ function App() {
 
 
 
-                    <Link to="/instructions" href="#" class="createbtn d-flex align-items-center rounded-pill lh-1 border-0 overflow-hidden text-nowrap fw-semibold text-decoration-none py-3 px-4 gap-3 text-white" >
-                      <span class="createbtn-icon-wrapper d-grid position-relative flex-shrink-0 bg-white overflow-hidden">
+                    <Link to="/instructions" href="#" className="createbtn d-flex align-items-center rounded-pill lh-1 border-0 overflow-hidden text-nowrap fw-semibold text-decoration-none py-3 px-4 gap-3 text-white" >
+                      <span className="createbtn-icon-wrapper d-grid position-relative flex-shrink-0 bg-white overflow-hidden">
                         <svg
                           viewBox="0 0 14 15"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
-                          class="createbtn-icon-svg"
+                          className="createbtn-icon-svg"
                           width="10"
                         >
                           <path
@@ -82,7 +83,7 @@ function App() {
                           fill="none"
                           width="10"
                           xmlns="http://www.w3.org/2000/svg"
-                          class="createbtn-icon-svg createbtn-icon-svg--copy position-absolute"
+                          className="createbtn-icon-svg createbtn-icon-svg--copy position-absolute"
                         >
                           <path
                             d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
@@ -102,7 +103,7 @@ function App() {
                       </span>
 
                       <div className="icon bg-white position-absolute d-flex align-items-center justify-content-center  rounded-pill">
-                        <svg
+                        <svg  
                           height="24"
                           width="24"
                           viewBox="0 0 24 24"
@@ -131,7 +132,7 @@ function App() {
         <Route path="/quiz" element={<Quizstart />} />
 
       </Routes>
-    </BrowserRouter>
+  
   );
 }
 
