@@ -1,7 +1,26 @@
 /* relative values */
-.start-5{
+.start-5 {
     left: 5%;
 }
-.modal-content{
-    background: rgba(30,30,64,0.82)!important;
+
+.modal-content {
+    background: rgba(30, 30, 64, 0.82) !important;
+    backdrop-filter: blur(20px)
+}
+
+/* Input */
+  .host-field{
+    background: #1a1a35 ;
+    border:1px solid #2A2A5A;
+    border-radius:12px;
+    color:#F0F0FF;
+    font-family:'DM Sans',sans-serif;
+    transition:border .2s
+}
+  .host-field:focus{
+    border-color:#6C63FF;
+     box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.15)
+}
+  .host-field::placeholder{
+    color:#8888BB
 }

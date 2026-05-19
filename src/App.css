@@ -177,7 +177,10 @@ h1,h2,h3{
 }
 
 /* homepage buttons */
-
+.btn-primary{
+  background-color:#6C63FF!important;
+  border-color:#6C63FF!important;
+}
 /* create quiz btn  */
  .createbtn {
   cursor: pointer;
@@ -260,7 +263,7 @@ h1,h2,h3{
 .back-btn{
   width: fit-content;
 }
-.back-btn:hover{
+.back-btn:hover:focus{
  background: #e8e8e8;
  color: #000!important; 
  transition: all 0.01s smooth;
