@@ -90,7 +90,8 @@ function Host() {
                         <div className="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
                             <button className="btn btn-primary fs-6 mt-1 p-3 rounded-5"  > 
                                 {/* onClick={handleCreate}  disabled={loading} later events*/}
-                                {loading ? "🤖 Generating questions..." : "✨ Create Quiz"}
+                                // {loading ? "🤖 Generating questions..." : "✨ Create Quiz"}
+                                            ✨ Create Quiz
                             </button>
                         </div>
                     </div>
