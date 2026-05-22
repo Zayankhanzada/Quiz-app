@@ -1,5 +1,4 @@
 import logo from "./images/newlogo2.png";
-import "./App.css";
 import {Routes, Route, Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
