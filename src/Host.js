@@ -38,32 +38,70 @@ function Host() {
         }
     }, [location.pathname]);
     // Host setup
+    const [mode, setMode] = useState("ai");
+    const [manualQuestions, setManualQuestions] = useState("");
     const [numQ, setNumQ] = useState(3);
     const [name, setName] = useState("");
     const [topic, setTopic] = useState("");
     const [loading, setLoading] = useState(false);
     const [err, setErr] = useState("");
-    function onStart(){
+    function onStart() {
         console.log("your quiz in process")
-       
+
     }
-     function fetchAIQuestions(){
-            alert('quiz in process')
-        };
+    function fetchAIQuestions() {
+        alert('quiz in process')
+    };
     async function handleCreate() {
-        if (!name.trim() || !topic.trim()) { setErr("Fill in all fields"); return; }
-        setErr(""); setLoading(true);
-        try { 
-            const qs = await fetchAIQuestions(topic.trim(), numQ);
-            onStart({ name: name.trim(), topic: topic.trim(), questions: qs });
-        } catch (e) {
-            console.warn("AI failed, using sample questions", e);
-             onStart({
-                 name: name.trim(),
-                 topic: topic.trim(),
-                 //questions: SAMPLE_Q.slice(0, numQ)
-            });
+
+        if (!name.trim()) {
+            setErr("Enter your name");
+            return;
         }
+
+        setErr("");
+        setLoading(true);
+
+        try {
+
+            if (mode === "manual") {
+
+                const qs = manualQuestions
+                    .split("\n")
+                    .filter(q => q.trim());
+
+                onStart({
+                    name: name.trim(),
+                    topic: "Custom Quiz",
+                    questions: qs
+                });
+
+            } else {
+
+                if (!topic.trim()) {
+                    setErr("Enter quiz topic");
+                    setLoading(false);
+                    return;
+                }
+
+                const qs = await fetchAIQuestions(
+                    topic.trim(),
+                    numQ
+                );
+
+                onStart({
+                    name: name.trim(),
+                    topic: topic.trim(),
+                    questions: qs
+                });
+            }
+
+        } catch (e) {
+
+            console.warn(e);
+
+        }
+
         setLoading(false);
     }
 
@@ -89,36 +127,120 @@ function Host() {
                         </div>
                         <div className="modal-body py-0 mb-3">
                             <div className="row flex-column g-3">
+
                                 <div className="col-12">
-                                    <label for="firstName" className="form-label text-secondary">First name</label>
-                                    <input type="text" className="host-field fs-6 py-3 px-4 w-100 focus-ring-0 " id="firstName" placeholder="John Smith, etc.." value={name} onChange={e=>setName(e.target.value)} required="" />
-                                    <div className="invalid-feedback">
-                                        Valid Name is required.
-                                    </div>
+                                    <label htmlFor="firstName" className="form-label text-secondary">
+                                        First name
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        className="host-field fs-6 py-3 px-4 w-100 focus-ring-0"
+                                        id="firstName"
+                                        placeholder="John Smith, etc.."
+                                        value={name}
+                                        onChange={e => setName(e.target.value)}
+                                    />
                                 </div>
 
                                 <div className="col-12">
-                                    <label htmlFor="lastName" className="  form-label text-secondary">Quiz Topic</label>
-                                    <input type="text" className="host-field fs-6 py-3 px-4 w-100 focus-ring-0 " id="lastName" placeholder="Socail Sciences, Foreign affairs, etc.." value={topic} onChange={e=>setTopic(e.target.value)} onKeyDown={e=>e.key==="Enter"&&handleCreate()} required="" /> <div className="invalid-feedback">
-                                        Topic is required.
+
+                                    <div className="d-flex gap-2 mb-3">
+
+                                        <button
+                                            type="button"
+                                            className={`btn ${mode === "ai"
+                                                ? "btn-primary"
+                                                : "btn-outline-primary"}`}
+
+                                            onClick={() => setMode("ai")}
+                                        >
+                                            AI Generated
+                                        </button>
+
+                                        <button
+                                            type="button"
+                                            className={`btn ${mode === "manual"
+                                                ? "btn-primary"
+                                                : "btn-outline-primary"}`}
+
+                                            onClick={() => setMode("manual")}
+                                        >
+                                            Create Manually
+                                        </button>
+
                                     </div>
+
+                                    {mode === "ai" ? (
+                                        <>
+                                            <label
+                                                htmlFor="topic"
+                                                className="form-label text-secondary"
+                                            >
+                                                Quiz Topic
+                                            </label>
+
+                                            <input
+                                                type="text"
+                                                className="host-field fs-6 py-3 px-4 w-100 focus-ring-0"
+                                                id="topic"
+                                                placeholder="Social Sciences, Foreign affairs, etc.."
+                                                value={topic}
+                                                onChange={e => setTopic(e.target.value)}
+                                            />
+
+                                            <div className="mt-3">
+                                                <label className="fs-6 text-secondary mb-2 d-block">
+                                                    NUMBER OF QUESTIONS —
+                                                    <strong className="text-primary"> {numQ}</strong>
+                                                </label>
+
+                                                <input
+                                                    type="range"
+                                                    min={3}
+                                                    max={10}
+                                                    value={numQ}
+                                                    step={1}
+                                                    className="w-100"
+                                                    onChange={e => setNumQ(+e.target.value)}
+                                                />
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <label
+                                                htmlFor="manualQuestions"
+                                                className="form-label text-secondary"
+                                            >
+                                                Enter Questions
+                                            </label>
+
+                                            <textarea
+                                                id="manualQuestions"
+                                                rows="6"
+                                                className="form-control"
+                                                placeholder={`What is React?
+What is JSX?
+What is State?`}
+                                                value={manualQuestions}
+                                                onChange={e =>
+                                                    setManualQuestions(e.target.value)
+                                                }
+                                            />
+                                        </>
+                                    )}
+
                                 </div>
 
-                                <div className=''>
-                                    <label className="fs-6 text-secondary mb-2 d-block" style={{ color: "#8888BB" }}>NUMBER OF QUESTIONS — <strong style={{ color: "#6C63FF" }}>{numQ}</strong></label>
-                                    <input type="range" min={3} max={10} value={numQ} step={1}
-                                        className="w-100" style={{ accentColor: "#6C63FF" }}
-                                        onChange={e => setNumQ(+e.target.value)} />
-                                </div>
                             </div>
                         </div>
                         <div className="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
                             {err && <div className="text-danger fs-6">{err}</div>}
-                            <button className="btn btn-primary fs-6 mt-1 p-3 rounded-5" onClick={handleCreate}  disabled={loading} >
-                                
+                            <button className="btn btn-primary fs-6 mt-1 p-3 rounded-5" onClick={handleCreate} disabled={loading} >
+
                                 {loading ? "🤖 Generating questions..." : "✨ Create Quiz"}
-                                
-                              
+
+
                             </button>
                         </div>
                     </div>
