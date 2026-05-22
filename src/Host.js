@@ -5,14 +5,7 @@ import { useLocation, Link } from 'react-router-dom';
 import { ArrowLeftShort } from "react-bootstrap-icons";
 function Host() {
     const location = useLocation()
-    // Host setup
-    const [numQ, setNumQ] = useState(3);
-    // const [name, setName] = useState("");
-    // const [topic, setTopic] = useState("");
-    // const [loading, setLoading] = useState(false);
-    // const [loading, setLoading] = useState(false);
-    // const [err, setErr] = useState("");
-
+    // for the space background
     useEffect(() => {
         if (location.pathname !== "/host") return;
         const starsContainer = document.getElementById("stars");
@@ -44,11 +37,42 @@ function Host() {
             starsContainer.appendChild(star);
         }
     }, [location.pathname]);
+    // Host setup
+    const [numQ, setNumQ] = useState(3);
+    const [name, setName] = useState("");
+    const [topic, setTopic] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [err, setErr] = useState("");
+    function onStart(){
+        console.log("your quiz in process")
+       
+    }
+     function fetchAIQuestions(){
+            alert('quiz in process')
+        };
+    async function handleCreate() {
+        if (!name.trim() || !topic.trim()) { setErr("Fill in all fields"); return; }
+        setErr(""); setLoading(true);
+        try { 
+            const qs = await fetchAIQuestions(topic.trim(), numQ);
+            onStart({ name: name.trim(), topic: topic.trim(), questions: qs });
+        } catch (e) {
+            console.warn("AI failed, using sample questions", e);
+             onStart({
+                 name: name.trim(),
+                 topic: topic.trim(),
+                 //questions: SAMPLE_Q.slice(0, numQ)
+            });
+        }
+        setLoading(false);
+    }
+
+
 
     return (
         <>
             <div className="stars" id="stars"></div>
-            <div className="container d-flex justify-content-center flex-column p-5 m-5">
+            <div className="container d-flex justify-content-center flex-column p-lg-5 p-3 m-lg-5 m-0">
                 <div className='align-items-start'>
                     <Link to='/'
                         className="btn back-btn d-flex align-items-center gap-2 border border-2 text-white rounded-pill"
@@ -58,30 +82,30 @@ function Host() {
                     </Link>
                 </div>
                 <div className="mt-5 position-relative start-5">
-                    <div className="modal-content text-white rounded-4 shadow p-4">
+                    <div className="modal-content text-white rounded-4 p-lg-5 p-3">
                         <div className="modal-header d-flex flex-column align-items-start justify-content-start border-bottom-0">
-                            <h2 className="modal-title fw-Syne ">Host Setup</h2>
-                            <p className='text-secondary fs-6'>AI will generate your quiz questions</p>
+                            <h2 className="modal-title fw-Syne text-center text-lg-start ">Host Setup</h2>
+                            <p className='text-secondary fs-6'>AI will Help to Generate your quiz questions</p>
                         </div>
                         <div className="modal-body py-0 mb-3">
                             <div className="row flex-column g-3">
                                 <div className="col-12">
                                     <label for="firstName" className="form-label text-secondary">First name</label>
-                                    <input type="text" className="host-field fs-6 py-3 px-4 w-100 focus-ring-0 " id="firstName" placeholder="John Smith, etc.." value="" required="" />
+                                    <input type="text" className="host-field fs-6 py-3 px-4 w-100 focus-ring-0 " id="firstName" placeholder="John Smith, etc.." value={name} onChange={e=>setName(e.target.value)} required="" />
                                     <div className="invalid-feedback">
-                                        Valid first name is required.
+                                        Valid Name is required.
                                     </div>
                                 </div>
 
                                 <div className="col-12">
-                                    <label for="lastName" className="  form-label text-secondary">Quiz Topic</label>
-                                    <input type="text" className="host-field fs-6 py-3 px-4 w-100 focus-ring-0 " id="lastName" placeholder="Socail Sciences, Foreign affairs, etc.." value="" required="" /> <div className="invalid-feedback">
-                                        Valid last name is required.
+                                    <label htmlFor="lastName" className="  form-label text-secondary">Quiz Topic</label>
+                                    <input type="text" className="host-field fs-6 py-3 px-4 w-100 focus-ring-0 " id="lastName" placeholder="Socail Sciences, Foreign affairs, etc.." value={topic} onChange={e=>setTopic(e.target.value)} onKeyDown={e=>e.key==="Enter"&&handleCreate()} required="" /> <div className="invalid-feedback">
+                                        Topic is required.
                                     </div>
                                 </div>
 
                                 <div className=''>
-                                    <label className="fs-6 text-secondary mb-1 d-block" style={{ color: "#8888BB" }}>NUMBER OF QUESTIONS — <strong style={{ color: "#6C63FF" }}>{numQ}</strong></label>
+                                    <label className="fs-6 text-secondary mb-2 d-block" style={{ color: "#8888BB" }}>NUMBER OF QUESTIONS — <strong style={{ color: "#6C63FF" }}>{numQ}</strong></label>
                                     <input type="range" min={3} max={10} value={numQ} step={1}
                                         className="w-100" style={{ accentColor: "#6C63FF" }}
                                         onChange={e => setNumQ(+e.target.value)} />
@@ -89,11 +113,12 @@ function Host() {
                             </div>
                         </div>
                         <div className="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
-                            <button className="btn btn-primary fs-6 mt-1 p-3 rounded-5"> 
-                                {/* onClick={handleCreate} */}
-                                {/* {loading ? "🤖 Generating questions..." : "✨ Create Quiz"}
-                                from the button   disabled={loading} */}
-                                ✨ Create Quiz
+                            {err && <div className="text-danger fs-6">{err}</div>}
+                            <button className="btn btn-primary fs-6 mt-1 p-3 rounded-5" onClick={handleCreate}  disabled={loading} >
+                                
+                                {loading ? "🤖 Generating questions..." : "✨ Create Quiz"}
+                                
+                              
                             </button>
                         </div>
                     </div>
