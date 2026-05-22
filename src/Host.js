@@ -10,6 +10,7 @@ function Host() {
     // const [name, setName] = useState("");
     // const [topic, setTopic] = useState("");
     // const [loading, setLoading] = useState(false);
+    // const [loading, setLoading] = useState(false);
     // const [err, setErr] = useState("");
 
     useEffect(() => {
@@ -88,10 +89,11 @@ function Host() {
                             </div>
                         </div>
                         <div className="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
-                            <button className="btn btn-primary fs-6 mt-1 p-3 rounded-5"  > 
-                                {/* onClick={handleCreate}  disabled={loading} later events*/}
-                                // {loading ? "🤖 Generating questions..." : "✨ Create Quiz"}
-                                            ✨ Create Quiz
+                            <button className="btn btn-primary fs-6 mt-1 p-3 rounded-5"> 
+                                {/* onClick={handleCreate} */}
+                                {/* {loading ? "🤖 Generating questions..." : "✨ Create Quiz"}
+                                from the button   disabled={loading} */}
+                                ✨ Create Quiz
                             </button>
                         </div>
                     </div>
