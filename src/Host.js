@@ -40,18 +40,12 @@ function Host() {
     }, [location.pathname]);
     // Host setup
     const [mode, setMode] = useState("ai");
-    const [manualQuestions, setManualQuestions] = useState("");
     const [numQ, setNumQ] = useState(3);
     const [name, setName] = useState("");
     const [topic, setTopic] = useState("");
     const [loading, setLoading] = useState(false);
     const [err, setErr] = useState("");
-    const [testOption, setTestOption] = useState([
-        "",
-        "",
-        "",
-        ""
-    ]);
+  
     const [questions, setQuestions] = useState([
         {
             question: "",
@@ -68,14 +62,6 @@ function Host() {
         setQuestions(updated);
     }
 
-    function handleOptionChange(qIndex, optIndex, value) {
-
-        const updated = [...questions];
-
-        updated[qIndex].options[optIndex] = value;
-
-        setQuestions(updated);
-    }
 
     function handleCorrectAnswer(qIndex, optIndex) {
 
@@ -122,9 +108,9 @@ function Host() {
         console.log("your quiz in process")
 
     }
-    function fetchAIQuestions() {
-        alert('quiz in process')
-    };
+    // function fetchAIQuestions() {
+    //     alert('quiz in process')
+    // };
     async function handleCreate() {
 
         if (!name.trim()) {
