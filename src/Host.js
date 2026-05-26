@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import "./App.css";
 import "./css/host.css"
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeftShort } from "react-bootstrap-icons";
 function Host() {
+    const navigate = useNavigate();
     const location = useLocation()
     // for the space background
     useEffect(() => {
@@ -51,13 +52,70 @@ function Host() {
         "",
         ""
     ]);
-    function handleOptionChange(index, value) {
+    const [questions, setQuestions] = useState([
+        {
+            question: "",
+            options: ["", "", "", ""],
+            correctAnswers: []
+        }
+    ]);
+    function handleQuestionChange(index, value) {
 
-        const updated = [...testOption];
+        const updated = [...questions];
 
-        updated[index] = value;
+        updated[index].question = value;
 
-        setTestOption(updated);
+        setQuestions(updated);
+    }
+
+    function handleOptionChange(qIndex, optIndex, value) {
+
+        const updated = [...questions];
+
+        updated[qIndex].options[optIndex] = value;
+
+        setQuestions(updated);
+    }
+
+    function handleCorrectAnswer(qIndex, optIndex) {
+
+        const updated = [...questions];
+
+        if (
+            updated[qIndex].correctAnswers.includes(optIndex)
+        ) {
+
+            updated[qIndex].correctAnswers =
+                updated[qIndex].correctAnswers.filter(
+                    item => item !== optIndex
+                );
+
+        } else {
+
+            updated[qIndex].correctAnswers.push(optIndex);
+        }
+
+        setQuestions(updated);
+    }
+
+    function addQuestion() {
+
+        setQuestions([
+            ...questions,
+            {
+                question: "",
+                options: ["", "", "", ""],
+                correctAnswers: []
+            }
+        ]);
+    }
+    function handleOptionChange(qIndex, optIndex, value) {
+
+        const updated = [...questions];
+
+        updated[qIndex].options[optIndex] = value;
+
+        setQuestions(updated);
     }
 
     function onStart() {
@@ -81,34 +139,53 @@ function Host() {
 
             if (mode === "manual") {
 
-                if (!manualQuestions.trim()) {
-                    setErr("Enter your question !");
-                    setLoading(false);
-                    return;
-                }
+                for (let i = 0; i < questions.length; i++) {
 
-                const filledOptions = testOption.filter(
-                    opt => opt.trim() !== ""
-                );
+                    const q = questions[i];
 
-                if (filledOptions.length < 2) {
-                    setErr("Please enter at least 2 options!");
-                    setLoading(false);
-                    return;
-                }
+                    if (!q.question.trim()) {
 
-                const qs = [
-                    {
-                        question: manualQuestions.trim(),
-                        options: filledOptions
+                        setErr(`Question ${i + 1} is empty`);
+
+                        setLoading(false);
+
+                        return;
                     }
-                ];
+
+                    const filledOptions = q.options.filter(
+                        opt => opt.trim() !== ""
+                    );
+
+                    if (filledOptions.length < 2) {
+
+                        setErr(
+                            `Question ${i + 1} needs at least 2 options`
+                        );
+
+                        setLoading(false);
+
+                        return;
+                    }
+
+                    if (q.correctAnswers.length === 0) {
+
+                        setErr(
+                            `Select at least one correct answer for Question ${i + 1}`
+                        );
+
+                        setLoading(false);
+
+                        return;
+                    }
+                }
 
                 onStart({
                     name: name.trim(),
                     topic: "Custom Quiz",
-
+                    questions
                 });
+
+                navigate("/quiz");
             }
             onStart({
                 name: name.trim(),
@@ -229,36 +306,92 @@ function Host() {
                                         </>
                                     ) : (
                                         <>
-                                            <h3 className='text-primary text-center fs-5 m-0 p-0 mt-5 '>Question Builder</h3>
-                                            <p className='fs-6 text-secondary text-center text-nowrap'>Architect your Quiz Board,  Enter the question text and define potential answers</p>
-                                            <label htmlFor="manualQuestions" className="form-label">  Question Text:  </label>
-                                            <textarea id="manualQuestions" rows="6" className="form-control border-dark  p-4" placeholder={`Enter Your Question with respective Options`} value={manualQuestions} onChange={e => setManualQuestions(e.target.value)} required />
+                                            <h3 className='text-primary text-center fs-5 m-0 p-0 mt-5'>
+                                                Question Builder
+                                            </h3>
 
-                                            <div className="options d-flex align-items-center justify-content-center flex-column gap-3 mt-4">
+                                            <p className='fs-6 text-secondary text-center text-nowrap'>
+                                                Architect your Quiz Board, Enter the question text and define potential answers
+                                            </p>
 
-                                                {testOption.map((opt, index) => (
+                                            {questions.map((q, qIndex) => (
 
-                                                    <label
-                                                        key={index}
-                                                        className='d-flex align-items-center gap-2 test-option  w-100 p-3 text-white text-start border-0 px-4'
-                                                    >
+                                                <div
+                                                    key={qIndex}
+                                                    className="border rounded-4 p-3 mt-4"
+                                                >
 
-                                                        <input type='checkbox' />
-
-                                                        <input
-                                                            className="test-option border-0 w-100"
-                                                            placeholder={`Option ${String.fromCharCode(65 + index)}`}
-                                                            value={opt}
-                                                            onChange={(e) =>
-                                                                handleOptionChange(index, e.target.value)
-                                                            }
-                                                        />
-
+                                                    <label className="form-label">
+                                                        Question {qIndex + 1}
                                                     </label>
- 
-                                                ))}
-                                              <h5 className=' mt-lg-2 mt-1 fs-5'>Tap the checkbox for declaring an correct answer 😬!</h5>
-                                            </div>
+
+                                                    <textarea
+                                                        rows="4"
+                                                        className="form-control border-dark p-4"
+                                                        placeholder="Enter your question"
+                                                        value={q.question}
+                                                        onChange={(e) =>
+                                                            handleQuestionChange(
+                                                                qIndex,
+                                                                e.target.value
+                                                            )
+                                                        }
+                                                    />
+
+                                                    <div className="options d-flex flex-column gap-3 mt-4">
+
+                                                        {q.options.map((opt, optIndex) => (
+
+                                                            <label
+                                                                key={optIndex}
+                                                                className='d-flex align-items-center gap-2 test-option w-100 p-3 text-white text-start border-0 px-4'
+                                                            >
+
+                                                                <input
+                                                                    type='checkbox'
+                                                                    checked={q.correctAnswers.includes(optIndex)}
+                                                                    onChange={() =>
+                                                                        handleCorrectAnswer(
+                                                                            qIndex,
+                                                                            optIndex
+                                                                        )
+                                                                    }
+                                                                />
+
+                                                                <input
+                                                                    className="test-option border-0 w-100 text-white"
+                                                                    placeholder={`Option ${String.fromCharCode(65 + optIndex)}`}
+                                                                    value={opt}
+                                                                    onChange={(e) =>
+                                                                        handleOptionChange(
+                                                                            qIndex,
+                                                                            optIndex,
+                                                                            e.target.value
+                                                                        )
+                                                                    }
+                                                                />
+
+                                                            </label>
+
+                                                        ))}
+
+                                                    </div>
+
+                                                </div>
+
+                                            ))}
+
+                                            <button
+                                                type="button"
+                                                className="btn btn-outline-primary mt-4 w-100"
+                                                onClick={addQuestion}
+                                            >
+                                                + Add Question
+                                            </button>
+
+                                            <h5 className='mt-lg-2 mt-3 fs-6 text-center'>
+                                                Tap the checkbox for declaring a correct answer 😬!
+                                            </h5>
                                         </>
                                     )}
 
