@@ -45,6 +45,21 @@ function Host() {
     const [topic, setTopic] = useState("");
     const [loading, setLoading] = useState(false);
     const [err, setErr] = useState("");
+    const [testOption, setTestOption] = useState([
+        "",
+        "",
+        "",
+        ""
+    ]);
+    function handleOptionChange(index, value) {
+
+        const updated = [...testOption];
+
+        updated[index] = value;
+
+        setTestOption(updated);
+    }
+
     function onStart() {
         console.log("your quiz in process")
 
@@ -66,35 +81,41 @@ function Host() {
 
             if (mode === "manual") {
 
-                const qs = manualQuestions
-                    .split("\n")
-                    .filter(q => q.trim());
-
-                onStart({
-                    name: name.trim(),
-                    topic: "Custom Quiz",
-                    questions: qs
-                });
-
-            } else {
-
-                if (!topic.trim()) {
-                    setErr("Enter quiz topic");
+                if (!manualQuestions.trim()) {
+                    setErr("Enter your question !");
                     setLoading(false);
                     return;
                 }
 
-                const qs = await fetchAIQuestions(
-                    topic.trim(),
-                    numQ
+                const filledOptions = testOption.filter(
+                    opt => opt.trim() !== ""
                 );
+
+                if (filledOptions.length < 2) {
+                    setErr("Please enter at least 2 options!");
+                    setLoading(false);
+                    return;
+                }
+
+                const qs = [
+                    {
+                        question: manualQuestions.trim(),
+                        options: filledOptions
+                    }
+                ];
 
                 onStart({
                     name: name.trim(),
-                    topic: topic.trim(),
-                    questions: qs
+                    topic: "Custom Quiz",
+
                 });
             }
+            onStart({
+                name: name.trim(),
+                topic: topic.trim(),
+
+            });
+
 
         } catch (e) {
 
@@ -130,7 +151,7 @@ function Host() {
 
                                 <div className="col-12">
                                     <label htmlFor="firstName" className="form-label text-secondary">
-                                        First name
+                                        Host Name
                                     </label>
 
                                     <input
@@ -208,25 +229,36 @@ function Host() {
                                         </>
                                     ) : (
                                         <>
-                                            <label
-                                                htmlFor="manualQuestions"
-                                                className="form-label text-secondary"
-                                            >
-                                                Enter Questions
-                                            </label>
+                                            <h3 className='text-primary text-center fs-5 m-0 p-0 mt-5 '>Question Builder</h3>
+                                            <p className='fs-6 text-secondary text-center text-nowrap'>Architect your Quiz Board,  Enter the question text and define potential answers</p>
+                                            <label htmlFor="manualQuestions" className="form-label">  Question Text:  </label>
+                                            <textarea id="manualQuestions" rows="6" className="form-control border-dark  p-4" placeholder={`Enter Your Question with respective Options`} value={manualQuestions} onChange={e => setManualQuestions(e.target.value)} required />
 
-                                            <textarea
-                                                id="manualQuestions"
-                                                rows="6"
-                                                className="form-control"
-                                                placeholder={`What is React?
-What is JSX?
-What is State?`}
-                                                value={manualQuestions}
-                                                onChange={e =>
-                                                    setManualQuestions(e.target.value)
-                                                }
-                                            />
+                                            <div className="options d-flex align-items-center justify-content-center flex-column gap-3 mt-4">
+
+                                                {testOption.map((opt, index) => (
+
+                                                    <label
+                                                        key={index}
+                                                        className='d-flex align-items-center gap-2 test-option  w-100 p-3 text-white text-start border-0 px-4'
+                                                    >
+
+                                                        <input type='checkbox' />
+
+                                                        <input
+                                                            className="test-option border-0 w-100"
+                                                            placeholder={`Option ${String.fromCharCode(65 + index)}`}
+                                                            value={opt}
+                                                            onChange={(e) =>
+                                                                handleOptionChange(index, e.target.value)
+                                                            }
+                                                        />
+
+                                                    </label>
+ 
+                                                ))}
+                                              <h5 className=' mt-lg-2 mt-1 fs-5'>Tap the checkbox for declaring an correct answer 😬!</h5>
+                                            </div>
                                         </>
                                     )}
 

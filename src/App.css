@@ -23,6 +23,9 @@ h1,h2,h3{
 .text-white {
   color: #f0fdfa !important;
 }
+.text-primary{
+  color: #6C63FF!important;
+}
 .App-header {
   max-height: 100vh;
   min-height: auto;
@@ -180,6 +183,10 @@ h1,h2,h3{
 .btn-primary{
   background-color:#6C63FF!important;
   border-color:#6C63FF!important;
+}
+.btn-primary:hover{
+  background-color: #7F7FD5!important;
+  border-color: #7F7FD5!important;
 }
 /* create quiz btn  */
  .createbtn {

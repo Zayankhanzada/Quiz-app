@@ -1,6 +1,6 @@
 /* relative values */
 .start-5 {
-    left: 5%;
+  left: 5%;
 }
 
 .modal-content {
@@ -14,36 +14,69 @@
   border-left: 1px solid rgba(255, 255, 255, 0.22);
   box-shadow:
     0 8px 32px rgba(0, 0, 0, 0.45),
-    inset 0 0 1px rgba(255,255,255,0.2)!important;
+    inset 0 0 1px rgba(255, 255, 255, 0.2) !important;
 
-    /* background: rgba(30, 30, 64, 0.82) !important;
+  /* background: rgba(30, 30, 64, 0.82) !important;
     backdrop-filter: blur(20px) */
 }
 
 /* Input */
-  .host-field{
-    background: #1a1a35 ;
-    border:1px solid #2A2A5A;
-    border-radius:12px;
-    color:#F0F0FF;
-    font-family:'DM Sans',sans-serif;
-    transition:border .2s
-}
-  .host-field:focus{
-    border-color:#6C63FF;
-     box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.15)
-}
-  .host-field::placeholder{
-    color:#8888BB
+.host-field {
+  background: #1a1a35;
+  border: 1px solid #2A2A5A;
+  border-radius: 12px;
+  color: #F0F0FF;
+  font-family: 'DM Sans', sans-serif;
+  transition: border .2s
 }
 
-@media screen and (min-width:2560px){
-  .start-5{
-    left:50%
+.host-field:focus {
+  border-color: #6C63FF;
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.15)
+}
+
+.host-field::placeholder {
+  color: #8888BB
+}
+
+/* manual host setup */
+.form-control {
+  background-color: #1a1a35 !important;
+
+}
+
+.form-control:focus {
+  background-color: #1a1a35 !important;
+  color: white !important;
+  box-shadow: none
+}
+
+.form-control::placeholder{
+  color: white;
+}
+.test-option{
+  background:#1a1a35 ;
+  color: white;
+}
+
+.test-option::placeholder{
+  color: #f0fdfa;
+}
+.test-option input[type="checkbox"] {
+  width: 25px;
+  height: 15px;
+}
+.test-option input:focus-visible{
+  outline:0!important;
+}
+@media screen and (min-width:2560px) {
+  .start-5 {
+    left: 50%
   }
 }
-@media screen and (max-width:575.98px){
-   .start-5{
+
+@media screen and (max-width:575.98px) {
+  .start-5 {
     left: 0;
-   }
+  }
 }
