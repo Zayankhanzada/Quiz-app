@@ -1,8 +1,8 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const API_KEY = "No_API_found";
+// const API_KEY = "No_API_found";
 
-const genAI = new GoogleGenerativeAI(API_KEY);
+const genAI = new GoogleGenerativeAI();
 
 export async function generateQuiz(topic, count) {
   const model = genAI.getGenerativeModel({
