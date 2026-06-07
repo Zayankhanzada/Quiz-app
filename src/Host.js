@@ -3,7 +3,7 @@ import "./App.css";
 import "./css/host.css"
 import { useLocation, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeftShort } from "react-bootstrap-icons";
-import { generateQuiz } from "./GeminiService";
+// import { generateQuiz } from "./GeminiService";
 
 
     
@@ -113,37 +113,37 @@ function Host() {
         console.log("your quiz in process")
 
     }
-    async function fetchAIQuestions() {
-  if (!topic.trim()) {
-    setErr("Enter a quiz topic");
-    return;
-  }
+//     async function fetchAIQuestions() {
+//   if (!topic.trim()) {
+//     setErr("Enter a quiz topic");
+//     return;
+//   }
 
-  try {
-    setLoading(true);
-    setErr("");
+//   try {
+//     setLoading(true);
+//     setErr("");
 
-    const generatedQuestions =
-      await generateQuiz(topic, numQ);
+//     const generatedQuestions =
+//       await generateQuiz(topic, numQ);
 
-    navigate("/quiz", {
-      state: {
-        hostName: name,
-        topic,
-        questions: generatedQuestions
-      }
-    });
+//     navigate("/quiz", {
+//       state: {
+//         hostName: name,
+//         topic,
+//         questions: generatedQuestions
+//       }
+//     });
 
-  } catch (error) {
-    console.error(error);
+//   } catch (error) {
+//     console.error(error);
 
-    setErr(
-      "Failed to generate questions. Please try again or check console for more."
-    );
-  } finally {
-    setLoading(false);
-  }
-}
+//     setErr(
+//       "Failed to generate questions. Please try again or check console for more."
+//     );
+//   } finally {
+//     setLoading(false);
+//   }
+// }
  async function handleCreate() {
   if (!name.trim()) {
     setErr("Enter your name");
@@ -192,7 +192,7 @@ function Host() {
     return;
   }
 
-  await fetchAIQuestions();
+//   await fetchAIQuestions();
 }
 
 
