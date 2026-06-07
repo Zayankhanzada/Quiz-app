@@ -3,7 +3,26 @@ import "./App.css";
 import "./css/host.css"
 import { useLocation, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeftShort } from "react-bootstrap-icons";
+import { generateQuiz } from "./GeminiService";
+
+
+    
 function Host() {
+    // All Declearation of Component
+ // Host setup Declearation
+    const [mode, setMode] = useState("ai");
+    const [numQ, setNumQ] = useState(3);
+    const [name, setName] = useState("");
+    const [topic, setTopic] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [err, setErr] = useState("");
+    const [questions, setQuestions] = useState([
+        {
+            question: "",
+            options: ["", "", "", ""],
+            correctAnswers: []
+        }
+    ]);
     const navigate = useNavigate();
     const location = useLocation()
     // for the space background
@@ -38,21 +57,7 @@ function Host() {
             starsContainer.appendChild(star);
         }
     }, [location.pathname]);
-    // Host setup
-    const [mode, setMode] = useState("ai");
-    const [numQ, setNumQ] = useState(3);
-    const [name, setName] = useState("");
-    const [topic, setTopic] = useState("");
-    const [loading, setLoading] = useState(false);
-    const [err, setErr] = useState("");
-  
-    const [questions, setQuestions] = useState([
-        {
-            question: "",
-            options: ["", "", "", ""],
-            correctAnswers: []
-        }
-    ]);
+   
     function handleQuestionChange(index, value) {
 
         const updated = [...questions];
@@ -108,86 +113,87 @@ function Host() {
         console.log("your quiz in process")
 
     }
-    // function fetchAIQuestions() {
-    //     alert('quiz in process')
-    // };
-    async function handleCreate() {
+    async function fetchAIQuestions() {
+  if (!topic.trim()) {
+    setErr("Enter a quiz topic");
+    return;
+  }
 
-        if (!name.trim()) {
-            setErr("Enter your name");
-            return;
-        }
+  try {
+    setLoading(true);
+    setErr("");
 
-        setErr("");
-        setLoading(true);
+    const generatedQuestions =
+      await generateQuiz(topic, numQ);
 
-        try {
+    navigate("/quiz", {
+      state: {
+        hostName: name,
+        topic,
+        questions: generatedQuestions
+      }
+    });
 
-            if (mode === "manual") {
+  } catch (error) {
+    console.error(error);
 
-                for (let i = 0; i < questions.length; i++) {
+    setErr(
+      "Failed to generate questions. Please try again or check console for more."
+    );
+  } finally {
+    setLoading(false);
+  }
+}
+ async function handleCreate() {
+  if (!name.trim()) {
+    setErr("Enter your name");
+    return;
+  }
 
-                    const q = questions[i];
+  setErr("");
 
-                    if (!q.question.trim()) {
+  if (mode === "manual") {
 
-                        setErr(`Question ${i + 1} is empty`);
+    for (let i = 0; i < questions.length; i++) {
 
-                        setLoading(false);
+      const q = questions[i];
 
-                        return;
-                    }
+      if (!q.question.trim()) {
+        setErr(`Question ${i + 1} is empty`);
+        return;
+      }
 
-                    const filledOptions = q.options.filter(
-                        opt => opt.trim() !== ""
-                    );
+      const filledOptions =
+        q.options.filter(opt => opt.trim());
 
-                    if (filledOptions.length < 2) {
+      if (filledOptions.length < 2) {
+        setErr(
+          `Question ${i + 1} needs at least 2 options`
+        );
+        return;
+      }
 
-                        setErr(
-                            `Question ${i + 1} needs at least 2 options`
-                        );
-
-                        setLoading(false);
-
-                        return;
-                    }
-
-                    if (q.correctAnswers.length === 0) {
-
-                        setErr(
-                            `Select at least one correct answer for Question ${i + 1}`
-                        );
-
-                        setLoading(false);
-
-                        return;
-                    }
-                }
-
-                onStart({
-                    name: name.trim(),
-                    topic: "Custom Quiz",
-                    questions
-                });
-
-                navigate("/quiz");
-            }
-            onStart({
-                name: name.trim(),
-                topic: topic.trim(),
-
-            });
-
-
-        } catch (e) {
-
-            console.warn(e);
-
-        }
-
-        setLoading(false);
+      if (q.correctAnswers.length === 0) {
+        setErr(
+          `Select a correct answer for Question ${i + 1}`
+        );
+        return;
+      }
     }
+
+    navigate("/quiz", {
+      state: {
+        hostName: name,
+        topic: "Custom Quiz",
+        questions
+      }
+    });
+
+    return;
+  }
+
+  await fetchAIQuestions();
+}
 
 
 
@@ -296,7 +302,7 @@ function Host() {
                                                 Question Builder
                                             </h3>
 
-                                            <p className='fs-6 text-secondary text-center text-nowrap'>
+                                            <p className='fs-6 text-secondary text-center text-wrap'>
                                                 Architect your Quiz Board, Enter the question text and define potential answers
                                             </p>
 

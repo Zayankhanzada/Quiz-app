@@ -97,7 +97,7 @@ function App() {
                     <Link
                       to="/instructions"
                       className="main-start-btn bg-white fs-5 border-0 d-flex align-items-center overflow-hidden position-relative  gap-3 px-5 py-3 text-decoration-none rounded-pill"
-                      classNmae="l">
+                      >
                       <span className="pe-3 fs-5 fw-medium">
                         Join the Quiz!
                       </span>
