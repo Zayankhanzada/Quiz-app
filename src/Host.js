@@ -14,7 +14,7 @@ function Host() {
     const [numQ, setNumQ] = useState(3);
     const [name, setName] = useState("");
     const [topic, setTopic] = useState("");
-    const [loading, setLoading] = useState(false);
+    // const [loading, setLoading] = useState(false);
     const [err, setErr] = useState("");
     const [questions, setQuestions] = useState([
         {
@@ -109,10 +109,10 @@ function Host() {
         setQuestions(updated);
     }
 
-    function onStart() {
-        console.log("your quiz in process")
+    // function onStart() {
+    //     console.log("your quiz in process")
 
-    }
+    // }
 //     async function fetchAIQuestions() {
 //   if (!topic.trim()) {
 //     setErr("Enter a quiz topic");
