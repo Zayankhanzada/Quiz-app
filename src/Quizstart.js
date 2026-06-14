@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "./images/newlogo2.png";
-import { BrightnessHighFill,MoonFill } from "react-bootstrap-icons";
+import { BrightnessHighFill, MoonFill } from "react-bootstrap-icons";
 import "./css/start.css";
 export default function Quizstart() {
   // sidebar closing
@@ -84,18 +84,19 @@ export default function Quizstart() {
           </div>
           <div className=" justify-content-center text-center text-white pt-1  ">
             <h2 className="text-center fs-4" style={{ color: theme.color }}>
-               QuizBoard
-               </h2>
-            
-          </div>
-          <div className="justiy-content-end ">
-            <button
-              className="btn btn-primary align-items-center fs-4"
-              onClick={() => changetheme()}
-            >
-                       {theme ? <BrightnessHighFill/> : <MoonFill/>}
+              QuizBoard
+            </h2>
 
+          </div>
+          <div className="justify-content-end ">
+            <button
+              className="btn btn-primary theme align-items-center fs-4"
+              onClick={() => changetheme()}>
+              {theme.mode === "dark"
+                ? <BrightnessHighFill />
+                : <MoonFill />}
             </button>
+
           </div>
         </div>
       </nav>
@@ -110,7 +111,7 @@ export default function Quizstart() {
             >
               <div className="d-flex align-items-center justify-content-between p-3 border-bottom">
                 <h5 className="fs-5 fw-semibold">Questions:</h5>
-                
+
               </div>
               <div className="list-group list-group-flush border-bottom overflow-auto flex-grow-1">
                 <a
@@ -290,7 +291,7 @@ export default function Quizstart() {
         </div>
 
         {/* body for Questions */}
-        <div className={`col-12 ${Sidebar ? "col-lg-8 " : "col-lg-10 px-5" } p-4 `} >
+        <div className={`col-12 ${Sidebar ? "col-lg-8 " : "col-lg-10 px-5"} p-4 `} >
           <div className=" my-5 ">
             <p className="">Choose From Below Options</p>
             <h2 className="fs-4">

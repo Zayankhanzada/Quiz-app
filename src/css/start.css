@@ -10,7 +10,10 @@ background: #343434!important;
 color: white!important;
 scale: 1.02;
 }
-.list-group-item-action:active{
+
+.theme{
+ transition: all 0.01ms ease-in;
+ transition-delay: 0.2s;
 }
 .submit:hover{
   background: white;  
