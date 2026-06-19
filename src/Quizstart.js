@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "./images/newlogo2.png";
+// import logo from "./images/newlogo2.png";
 import { BrightnessHighFill, MoonFill } from "react-bootstrap-icons";
 import "./css/start.css";
 export default function Quizstart() {
