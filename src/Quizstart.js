@@ -5,7 +5,7 @@ import { BrightnessHighFill, MoonFill } from "react-bootstrap-icons";
 import "./css/start.css";
 export default function Quizstart() {
   // sidebar closing
-  const [Sidebar, setSidebar] = useState(true);
+  const [Sidebar, setSidebar] = useState(false);
 
   // dark and light theme
   const [theme, settheme] = useState({
@@ -41,7 +41,7 @@ export default function Quizstart() {
           <div className="d-flex align-items-center flex-row gap-3">
             <Link
               to="/instructions"
-              className="btn border-secondary"
+              className="btn exit-button border-secondary"
               style={{ color: theme.color }}
             >
               <svg
@@ -59,7 +59,7 @@ export default function Quizstart() {
               </svg>
             </Link>
             <button
-              className="btn border-secondary  fw-bold"
+              className="btn border-secondary fw-bold"
               style={{ color: theme.color }}
               onClick={() => setSidebar(currentValue => !currentValue)}
             >
@@ -101,205 +101,205 @@ export default function Quizstart() {
         </div>
       </nav>
 
-      <div className="row gap-4 ">
+      <div className="row align-items-start gap-2   ">
         {/* Question offcanvas */}
-        <div className="col-12 col-lg-3  ">
-          {Sidebar && (
-            <div
-              className="sidebar d-flex flex-column shadow-lg "
-              style={theme}
-            >
-              <div className="d-flex align-items-center justify-content-between p-3 border-bottom">
-                <h5 className="fs-5 fw-semibold">Questions:</h5>
+        <div className={`col-12 ${Sidebar ? "col-lg-3 " : "col-lg-1"}`}>
 
-              </div>
-              <div className="list-group list-group-flush border-bottom overflow-auto flex-grow-1">
-                <a
-                  href="/quiz"
-                  className="list-group-item list-group-item-action  py-3 lh-sm"
-                  aria-current="true"
-                  style={theme}
-                >
-                  <div className="d-flex w-100 align-items-center justify-content-between">
-                    <strong className="mb-1">List group item heading</strong>
-                    <small><span className="badge text-bg-secondary">Status</span> </small>
-                  </div>
-                  <div className="col-10 mb-1 small">
-                    Some placeholder content in a paragraph below the heading
-                    and date.
-                  </div>
-                </a>
-                <a
-                  href="/quiz"
-                  className="list-group-item list-group-item-action py-3 lh-sm"
-                  style={theme}
-                >
-                  <div className="d-flex w-100 align-items-center justify-content-between">
-                    <strong className="mb-1">List group item heading</strong>
-                    <small className=""> <span className="badge text-bg-secondary">Status</span> </small>
-                  </div>
-                  <div className="col-10 mb-1 small">
-                    Some placeholder content in a paragraph below the heading
-                    and date.
-                  </div>
-                </a>
-                <a
-                  href="/quiz"
-                  className="list-group-item list-group-item-action py-3 lh-sm"
-                  style={theme}
-                >
-                  <div className="d-flex w-100 align-items-center justify-content-between">
-                    <strong className="mb-1">List group item heading</strong>
-                    <small><span className="badge text-bg-secondary">Status</span> </small>
-                  </div>
-                  <div className="col-10 mb-1 small">
-                    Some placeholder content in a paragraph below the heading
-                    and date.
-                  </div>
-                </a>
-                <a
-                  href="/quiz"
-                  className="list-group-item list-group-item-action py-3 lh-sm"
-                  aria-current="true"
-                  style={theme}
-                >
-                  <div className="d-flex w-100 align-items-center justify-content-between">
-                    <strong className="mb-1">List group item heading</strong>
-                    <small><span className="badge text-bg-secondary">Status</span> </small>
-                  </div>
-                  <div className="col-10 mb-1 small">
-                    Some placeholder content in a paragraph below the heading
-                    and date.
-                  </div>
-                </a>
-                <a
-                  href="/quiz"
-                  className="list-group-item list-group-item-action py-3 lh-sm"
-                  style={theme}
-                >
-                  <div className="d-flex w-100 align-items-center justify-content-between">
-                    <strong className="mb-1">List group item heading</strong>
-                    <small><span className="badge text-bg-secondary">Status</span> </small>
-                  </div>
-                  <div className="col-10 mb-1 small">
-                    Some placeholder content in a paragraph below the heading
-                    and date.
-                  </div>
-                </a>
-                <a
-                  href="/quiz"
-                  className="list-group-item list-group-item-action py-3 lh-sm"
-                  style={theme}
-                >
-                  <div className="d-flex w-100 align-items-center justify-content-between">
-                    <strong className="mb-1">List group item heading</strong>
-                    <small><span className="badge text-bg-secondary">Status</span> </small>
-                  </div>
-                  <div className="col-10 mb-1 small">
-                    Some placeholder content in a paragraph below the heading
-                    and date.
-                  </div>
-                </a>
-                <a
-                  href="/quiz"
-                  className="list-group-item list-group-item-action py-3 lh-sm"
-                  aria-current="true"
-                  style={theme}
-                >
-                  <div className="d-flex w-100 align-items-center justify-content-between">
-                    <strong className="mb-1">List group item heading</strong>
-                    <small><span className="badge text-bg-secondary">Status</span> </small>
-                  </div>
-                  <div className="col-10 mb-1 small">
-                    Some placeholder content in a paragraph below the heading
-                    and date.
-                  </div>
-                </a>
-                <a
-                  href="/quiz"
-                  className="list-group-item list-group-item-action py-3 lh-sm"
-                  style={theme}
-                >
-                  <div className="d-flex w-100 align-items-center justify-content-between">
-                    <strong className="mb-1">List group item heading</strong>
-                    <small><span className="badge text-bg-secondary">Status</span> </small>
-                  </div>
-                  <div className="col-10 mb-1 small">
-                    Some placeholder content in a paragraph below the heading
-                    and date.
-                  </div>
-                </a>
-                <a
-                  href="/quiz"
-                  className="list-group-item list-group-item-action py-3 lh-sm"
-                  style={theme}
-                >
-                  <div className="d-flex w-100 align-items-center justify-content-between">
-                    <strong className="mb-1">List group item heading</strong>
-                    <small><span className="badge text-bg-secondary">Status</span> </small>
-                  </div>
-                  <div className="col-10 mb-1 small">
-                    Some placeholder content in a paragraph below the heading
-                    and date.
-                  </div>
-                </a>
-                <a
-                  href="/quiz"
-                  className="list-group-item list-group-item-action py-3 lh-sm"
-                  style={theme}
-                >
-                  <div className="d-flex w-100 align-items-center justify-content-between">
-                    <strong className="mb-1">List group item heading</strong>
-                    <small><span className="badge text-bg-secondary">Status</span> </small>
-                  </div>
-                  <div className="col-10 mb-1 small">
-                    Some placeholder content in a paragraph below the heading
-                    and date.
-                  </div>
-                </a>
-                <a
-                  href="/quiz"
-                  className="list-group-item list-group-item-action py-3 lh-sm"
-                  style={theme}
-                >
-                  <div className="d-flex w-100 align-items-center justify-content-between">
-                    <strong className="mb-1">List group item heading</strong>
-                    <small><span className="badge text-bg-secondary">Status</span> </small>
-                  </div>
-                  <div className="col-10 mb-1 small">
-                    Some placeholder content in a paragraph below the heading
-                    and date.
-                  </div>
-                </a>
-                <a
-                  href="/quiz"
-                  className="list-group-item list-group-item-action py-3 lh-sm"
-                  style={theme}
-                >
-                  <div className="d-flex w-100 align-items-center justify-content-between">
-                    <strong className="mb-1">List group item heading</strong>
-                    <small><span className="badge text-bg-secondary">Status</span> </small>
-                  </div>
-                  <div className="col-10 mb-1 small">
-                    Some placeholder content in a paragraph below the heading
-                    and date.
-                  </div>
-                </a>
-              </div>
+          <div className={`sidebar ${Sidebar ? "show-sidebar" : "hide-sidebar"} d-flex flex-column shadow-lg`}
+            style={theme}
+          >
+            <div className="d-flex align-items-center justify-content-between p-3 border-bottom mt-1">
+              <h5 className="fs-5 fw-semibold">Questions Menu:</h5>
+
             </div>
-          )}
+            <div className="list-group list-group-flush border-bottom overflow-auto flex-grow-1">
+              <a
+                href="/quiz"
+                className="list-group-item list-group-item-action  py-3 lh-sm"
+                aria-current="true"
+                style={theme}
+              >
+                <div className="d-flex w-100 align-items-center justify-content-between">
+                  <strong className="mb-1">List group item heading</strong>
+                  <small><span className="badge text-bg-secondary">Status</span> </small>
+                </div>
+                <div className="col-10 mb-1 small">
+                  Some placeholder content in a paragraph below the heading
+                  and date.
+                </div>
+              </a>
+              <a
+                href="/quiz"
+                className="list-group-item list-group-item-action py-3 lh-sm"
+                style={theme}
+              >
+                <div className="d-flex w-100 align-items-center justify-content-between">
+                  <strong className="mb-1">List group item heading</strong>
+                  <small className=""> <span className="badge text-bg-secondary">Status</span> </small>
+                </div>
+                <div className="col-10 mb-1 small">
+                  Some placeholder content in a paragraph below the heading
+                  and date.
+                </div>
+              </a>
+              <a
+                href="/quiz"
+                className="list-group-item list-group-item-action py-3 lh-sm"
+                style={theme}
+              >
+                <div className="d-flex w-100 align-items-center justify-content-between">
+                  <strong className="mb-1">List group item heading</strong>
+                  <small><span className="badge text-bg-secondary">Status</span> </small>
+                </div>
+                <div className="col-10 mb-1 small">
+                  Some placeholder content in a paragraph below the heading
+                  and date.
+                </div>
+              </a>
+              <a
+                href="/quiz"
+                className="list-group-item list-group-item-action py-3 lh-sm"
+                aria-current="true"
+                style={theme}
+              >
+                <div className="d-flex w-100 align-items-center justify-content-between">
+                  <strong className="mb-1">List group item heading</strong>
+                  <small><span className="badge text-bg-secondary">Status</span> </small>
+                </div>
+                <div className="col-10 mb-1 small">
+                  Some placeholder content in a paragraph below the heading
+                  and date.
+                </div>
+              </a>
+              <a
+                href="/quiz"
+                className="list-group-item list-group-item-action py-3 lh-sm"
+                style={theme}
+              >
+                <div className="d-flex w-100 align-items-center justify-content-between">
+                  <strong className="mb-1">List group item heading</strong>
+                  <small><span className="badge text-bg-secondary">Status</span> </small>
+                </div>
+                <div className="col-10 mb-1 small">
+                  Some placeholder content in a paragraph below the heading
+                  and date.
+                </div>
+              </a>
+              <a
+                href="/quiz"
+                className="list-group-item list-group-item-action py-3 lh-sm"
+                style={theme}
+              >
+                <div className="d-flex w-100 align-items-center justify-content-between">
+                  <strong className="mb-1">List group item heading</strong>
+                  <small><span className="badge text-bg-secondary">Status</span> </small>
+                </div>
+                <div className="col-10 mb-1 small">
+                  Some placeholder content in a paragraph below the heading
+                  and date.
+                </div>
+              </a>
+              <a
+                href="/quiz"
+                className="list-group-item list-group-item-action py-3 lh-sm"
+                aria-current="true"
+                style={theme}
+              >
+                <div className="d-flex w-100 align-items-center justify-content-between">
+                  <strong className="mb-1">List group item heading</strong>
+                  <small><span className="badge text-bg-secondary">Status</span> </small>
+                </div>
+                <div className="col-10 mb-1 small">
+                  Some placeholder content in a paragraph below the heading
+                  and date.
+                </div>
+              </a>
+              <a
+                href="/quiz"
+                className="list-group-item list-group-item-action py-3 lh-sm"
+                style={theme}
+              >
+                <div className="d-flex w-100 align-items-center justify-content-between">
+                  <strong className="mb-1">List group item heading</strong>
+                  <small><span className="badge text-bg-secondary">Status</span> </small>
+                </div>
+                <div className="col-10 mb-1 small">
+                  Some placeholder content in a paragraph below the heading
+                  and date.
+                </div>
+              </a>
+              <a
+                href="/quiz"
+                className="list-group-item list-group-item-action py-3 lh-sm"
+                style={theme}
+              >
+                <div className="d-flex w-100 align-items-center justify-content-between">
+                  <strong className="mb-1">List group item heading</strong>
+                  <small><span className="badge text-bg-secondary">Status</span> </small>
+                </div>
+                <div className="col-10 mb-1 small">
+                  Some placeholder content in a paragraph below the heading
+                  and date.
+                </div>
+              </a>
+              <a
+                href="/quiz"
+                className="list-group-item list-group-item-action py-3 lh-sm"
+                style={theme}
+              >
+                <div className="d-flex w-100 align-items-center justify-content-between">
+                  <strong className="mb-1">List group item heading</strong>
+                  <small><span className="badge text-bg-secondary">Status</span> </small>
+                </div>
+                <div className="col-10 mb-1 small">
+                  Some placeholder content in a paragraph below the heading
+                  and date.
+                </div>
+              </a>
+              <a
+                href="/quiz"
+                className="list-group-item list-group-item-action py-3 lh-sm"
+                style={theme}
+              >
+                <div className="d-flex w-100 align-items-center justify-content-between">
+                  <strong className="mb-1">List group item heading</strong>
+                  <small><span className="badge text-bg-secondary">Status</span> </small>
+                </div>
+                <div className="col-10 mb-1 small">
+                  Some placeholder content in a paragraph below the heading
+                  and date.
+                </div>
+              </a>
+              <a
+                href="/quiz"
+                className="list-group-item list-group-item-action py-3 lh-sm"
+                style={theme}
+              >
+                <div className="d-flex w-100 align-items-center justify-content-between">
+                  <strong className="mb-1">List group item heading</strong>
+                  <small><span className="badge text-bg-secondary">Status</span> </small>
+                </div>
+                <div className="col-10 mb-1 small">
+                  Some placeholder content in a paragraph below the heading
+                  and date.
+                </div>
+              </a>
+            </div>
+          </div>
+
         </div>
 
         {/* body for Questions */}
-        <div className={`col-12 ${Sidebar ? "col-lg-8 " : "col-lg-10 px-5"} p-4 `} >
-          <div className=" my-5 ">
+        {/* */}
+        <div className={`col-12 ${Sidebar ? "col-lg-8 " : "col-lg-8 px-5"} p-4`}  >
+          <div className="question-wrapper  my-5 ">
             <p className="">Choose From Below Options</p>
             <h2 className="fs-4">
               <span className="fw-bolder fs-3">Q.</span> Here the Questions
               goes?
             </h2>
           </div>
-          <div className="options d-flex align-items-center justify-content-center flex-column gap-3">
+          <div className="options d-flex align-items-center justify-content-center  flex-column gap-3">
             <button
               className="btn w-100 p-3 text-start btn-outline-secondary"
               style={theme}
@@ -332,6 +332,6 @@ export default function Quizstart() {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 }

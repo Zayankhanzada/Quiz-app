@@ -1,21 +1,39 @@
-.sidebar{
+.sidebar {
     width: 380px;
-    height: 90vh;
+    height: 88vh;
+    transition: transform 0.4s ease;
+ 
 }
 
+.show-sidebar {
+    transform: translateX(0);
+}
+
+.hide-sidebar {
+    transform: translateX(-100%)
+}
+
+.question-wrapper{
+    transition: all .5s ease;
+}
 
 /* buttons stylings */
-.options button:hover{
-background: #343434!important;
-color: white!important;
-scale: 1.02;
+.exit-button:hover{
+    background:#A91101;
+    color:white!important
+}
+.options button:hover {
+    background: #343434 !important;
+    color: white !important;
+    scale: 1.02;
 }
 
-.theme{
- transition: all 0.01ms ease-in;
- transition-delay: 0.2s;
+.theme {
+    transition: all 0.01ms ease-in;
+    transition-delay: 0.2s;
 }
-.submit:hover{
-  background: white;  
- color: #343434;
+
+.submit:hover {
+    background: white;
+    color: #343434;
 }
