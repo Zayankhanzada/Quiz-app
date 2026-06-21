@@ -2,7 +2,7 @@
     width: 380px;
     height: 88vh;
     transition: transform 0.4s ease;
- 
+
 }
 
 .show-sidebar {
@@ -13,27 +13,140 @@
     transform: translateX(-100%)
 }
 
-.question-wrapper{
+.question-wrapper {
     transition: all .5s ease;
 }
 
-/* buttons stylings */
-.exit-button:hover{
-    background:#A91101;
-    color:white!important
+.modal {
+    backdrop-filter: blur(20px) !important;
 }
-.options button:hover {
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+/* buttons stylings */
+.exit-button:hover {
+    background: #882D17;
+    /* #A91101; */
+    color: white !important;
+    transform: translateY(3%)
+}
+
+.sidebar-btn {
+    transition: all 0.5s ease-out;
+}
+
+.sidebar-btn:hover {
+    transform: translateY(-3px);
+}
+
+.close .options button:hover {
     background: #343434 !important;
     color: white !important;
     scale: 1.02;
 }
 
+.modal .btn-success:hover {
+    color: white !important;
+}
+
 .theme {
     transition: all 0.01ms ease-in;
     transition-delay: 0.2s;
+    background: transparent;
+
+}
+
+.theme:hover {
+    background: dark;
 }
 
 .submit:hover {
     background: white;
     color: #343434;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+    display: none;
+    visibility: hidden;
+}
+
+.checkbox-wrapper label {
+    position: relative;
+    padding-left: 2em;
+    padding-right: 1em;
+    line-height: 2;
+    cursor: pointer;
+    display: inline-flex;
+}
+
+
+/* checkbox styles for options styling */
+.checkbox-wrapper {
+    width: 100%;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+    display: none;
+    visibility: hidden;
+}
+
+.checkbox-wrapper label {
+    position: relative;
+    padding: 12px 16px 12px 48px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    min-height: 56px;
+    width: 100%;
+    border: 2px solid #dee2e6;
+    border-radius: 12px;
+    background: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    transition: 0.25s all ease;
+}
+
+.checkbox-wrapper label:before {
+    box-sizing: border-box;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
+    border: 2px solid #9098a9;
+    border-radius: 6px;
+    z-index: 1;
+    transition: 0.25s all ease;
+}
+
+.checkbox-wrapper input[type="checkbox"]:checked+label {
+    color: #0f5229;
+    background: #b7e6c9;
+    border-color: #2cbc63;
+    padding-left: 48px;
+}
+
+.checkbox-wrapper input[type="checkbox"]:checked+label:before {
+    content: "✓";
+    color: #2cbc63;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.2em;
+}
+
+.checkbox-wrapper label:hover {
+    border-color: #2cbc63;
 }
