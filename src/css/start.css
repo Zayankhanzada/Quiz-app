@@ -10,7 +10,7 @@
 }
 
 .hide-sidebar {
-    transform: translateX(-100%)
+    transform: translateX(-250%)
 }
 
 .question-wrapper {
@@ -70,11 +70,15 @@
 .theme:hover {
     background: dark;
 }
-
-.submit:hover {
-    background: white;
-    color: #343434;
+.skip-btn:hover{
+    background-color: #334D66!important;
+    color: white!important;
 }
+.submit-btn:hover {
+    background:#49796B!important ;
+    color:white!important;
+}
+
 
 .checkbox-wrapper input[type="checkbox"] {
     display: none;
@@ -92,9 +96,9 @@
 
 
 /* checkbox styles for options styling */
-.checkbox-wrapper {
+/* .checkbox-wrapper {
     width: 100%;
-}
+} */
 
 .checkbox-wrapper input[type="checkbox"] {
     display: none;
@@ -105,15 +109,10 @@
     position: relative;
     padding: 12px 16px 12px 48px;
     cursor: pointer;
-    display: flex;
-    align-items: center;
     min-height: 56px;
-    width: 100%;
-    border: 2px solid #dee2e6;
+    border: 1px solid #dee2e6;
     border-radius: 12px;
     background: #fff;
-    font-size: 16px;
-    font-weight: 500;
     transition: 0.25s all ease;
 }
 
@@ -135,8 +134,9 @@
 .checkbox-wrapper input[type="checkbox"]:checked+label {
     color: #0f5229;
     background: #b7e6c9;
-    border-color: #2cbc63;
+   border: 2px solid #2cbc63!important;
     padding-left: 48px;
+    
 }
 
 .checkbox-wrapper input[type="checkbox"]:checked+label:before {

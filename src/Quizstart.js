@@ -54,7 +54,7 @@ export default function Quizstart() {
         style={{ background: theme.backgroundColor }}
       >
         <div className="container-fluid justify-content-between align-items-center">
-          <div className="d-flex align-items-center flex-row gap-3">
+          <div className="d-flex align-items-center flex-row gap-2 gap-lg-3">
             <Link
               to="/instructions"
               className="btn border-secondary exit-button"
@@ -142,10 +142,10 @@ export default function Quizstart() {
         </div>
       </nav>
 
-      <div className="row align-items-start gap-2 ">
+      <div className={`row flex-wrap-reverse ${Sidebar ? "" :"justify-content-center" } align-items-center gap-2`}>
         {/* Question offcanvas */}
-        <div className={`col-12 ${Sidebar ? "col-lg-3 " : "col-lg-1"}`}>
-          <div className={`sidebar ${Sidebar ? "show-sidebar" : "hide-sidebar"} d-flex flex-column shadow-lg border-end`}
+        <div className={`col-12 ${Sidebar ? "col-lg-3 " : "col-lg-1"}`} >
+          <div className={`sidebar ${Sidebar ? "show-sidebar" : "hide-sidebar"} d-flex flex-column justify-content-start align-items-start shadow-lg border-end`}
             style={theme}
           >
             <div className="d-flex align-items-center justify-content-between p-3 border-bottom mt-1 ">
@@ -331,32 +331,36 @@ export default function Quizstart() {
 
         {/* body for Questions */}
         {/* */}
-        <div className={`col-12 ${Sidebar ? "col-lg-8 " : "col-lg-8 px-5"} p-4`}  >
-          <div className="question-wrapper  my-5 ">
+        <div className={`col-12 ${Sidebar ? "col-lg-8 " : "col-lg-8 px-5"} p-4`} >
+          <div className="question-wrapper my-5 ">
             <p className="">Choose (No of Opt) From Below Options</p>
             <h2 className="fs-4">
               <span className="fw-bolder fs-3">Q.</span> Here the Questions
               goes?
             </h2>
           </div>
-          <div className="options d-flex align-items-center justify-content-center flex-column gap-3">
+          <div className="options d-flex align-items-center justify-content-center flex-column gap-3"  >
             {options.map((option, index) => (
-              <div key={index} className="checkbox-wrapper mb-2">
+              <div key={index} className="checkbox-wrapper w-100 mb-2" >
                 <input
                   type="checkbox"
                   id={`option-${index}`}
                   checked={selectedOption === index}
                   onChange={() => setSelectedOption(index)}
+                  style={{ color: theme.color, background: theme.backgroundColor }}
                 />
 
-                <label htmlFor={`option-${index}`}>
+                <label htmlFor={`option-${index}`} className="d-flex align-items-center fs-6 fw-regular w-100" style={{ color: theme.color, background: theme.backgroundColor, borderColor: theme.color }}>
                   {option}
                 </label>
               </div>
             ))}
           </div>
-          <div className=" mt-5">
-            <button type="button" className="btn btn-secondary submit" style={theme}>
+          <div className=" d-flex justify-content-between align-item-center mt-5">
+            <button type="button" className="btn btn-secondary skip-btn" style={theme}>
+              Skip Question
+            </button>
+            <button type="button" className="btn btn-secondary btn-border-success submit-btn" style={theme}>
               Submit Answer
             </button>
           </div>
