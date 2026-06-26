@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 // import logo from "./images/newlogo2.png";
 import { BrightnessHighFill, MoonFill } from "react-bootstrap-icons";
@@ -45,7 +45,19 @@ export default function Quizstart() {
     setShowModal(false);
     navigate("/instructions");
   };
+  // UseEffect for the prevention of page reloading
+  useEffect(() => {
+    const handleBeforeUnload = (e) => {
+      e.preventDefault();
+      e.returnValue = "";
+    };
 
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
 
   return (
     <div className="overflow-hidden h-100 " style={theme}>
@@ -142,15 +154,22 @@ export default function Quizstart() {
         </div>
       </nav>
 
-      <div className={`row flex-wrap-reverse ${Sidebar ? "" :"justify-content-center" } align-items-center gap-2`}>
+      <div className={`row flex-wrap-reverse ${Sidebar ? "" : "justify-content-center"} align-items-top gap-2`}>
         {/* Question offcanvas */}
         <div className={`col-12 ${Sidebar ? "col-lg-3 " : "col-lg-1"}`} >
           <div className={`sidebar ${Sidebar ? "show-sidebar" : "hide-sidebar"} d-flex flex-column justify-content-start align-items-start shadow-lg border-end`}
             style={theme}
           >
-            <div className="d-flex align-items-center justify-content-between p-3 border-bottom mt-1 ">
+            <div className="d-flex align-items-center justify-content-between w-100  p-3 border-bottom mt-1 ">
               <h5 className="fs-5 fw-semibold">Questions Menu:</h5>
-
+              <button
+                className="btn border-secondary sidebar-btn fw-bold d-inline-flex d-lg-none align-items-center gap-2"
+                style={{ color: theme.color }}
+                onClick={() => setSidebar(currentValue => !currentValue)}
+              >
+                <span className="d-lg-flex d-none">Questions</span>
+                {Sidebar ? <i className="bi bi-box-arrow-left"></i> : <i className="bi bi-box-arrow-right"></i>}
+              </button>
             </div>
             <div className="list-group list-group-flush border-bottom overflow-auto flex-grow-1 custom-scrollbar">
               <a
