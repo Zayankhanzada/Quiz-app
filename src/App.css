@@ -2,7 +2,7 @@
 
 body {
   background: #0D0D1A;
-  font-family: 'Syne', sans-serif;
+  font-family: "Syne","Roboto Mono", sans-serif;
 }
 
 h1,
@@ -14,7 +14,12 @@ h3 {
 .fw-Syne {
   font-family: 'Syne', sans-serif;
 }
-
+ .fw-mono{
+  font-family: "Roboto Mono", monospace;
+ }
+.fw-sans{
+  font-family: "Open Sans" , sans-serif;
+}
 .App {
   text-align: center;
   /* background-image: linear-gradient(to top, #a3bded 0%, #6991c7 100%); */
@@ -31,6 +36,9 @@ h3 {
 
 .text-primary {
   color: #6C63FF !important;
+}
+.bg-primary {
+  background: #6C63FF !important;
 }
 
 .App-header {

@@ -1,7 +1,7 @@
-.participant-page{
+/* .participant-page{
     position: relative;
     z-index: 2;
-}
+} */
 
 .lobby-card{
     background: rgba(20,20,35,.45);
@@ -47,7 +47,7 @@
 }
 
 .participant-list::-webkit-scrollbar-thumb{
-    background:#5b8cff;
+    background:#6C63FF;
     border-radius:20px;
 }
 

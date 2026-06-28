@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom';
+import {  useLocation, useNavigate } from 'react-router-dom';
 import QRCode from "react-qr-code";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./css/start.css"
 import "./App.css";
 import "./css/lobby.css"
 
@@ -9,7 +10,7 @@ import "./css/lobby.css"
 
 
 export default function Lobby() {
-
+  const navigate =useNavigate();
     const location = useLocation()
     // for the space background
     useEffect(() => {
@@ -52,7 +53,7 @@ export default function Lobby() {
         <>
             <div id="stars"></div>
 
-            <div className="container-fluid participant-page">
+            <div className="container-fluid position-relative z-2">
                 <div className="row justify-content-center align-items-center min-vh-100">
 
                     <div className="col-lg-10">
@@ -73,13 +74,13 @@ export default function Lobby() {
                                             Join Quiz
                                         </h4>
 
-                                        <div className="code-box bg-white text-dark fs-3 fw-bold text-center mb-4">
+                                        <div className="code-box  bg-white text-dark fw-sans fs-3 fw-bold text-center mb-4">
                                             {quizCode}
                                         </div>
 
-                                        <div className="qr-wrapper bg-white p-4 px-0 mb-4">
+                                        <div className="qr-wrapper bg-white p-4 px-0 mb-4 rounded-3">
                                             <QRCode
-                                                value={`http://localhost:3000/join/${quizCode}`}
+                                                value={`http://192.168.1.73:3000`}
                                                 size={170}
                                                 bgColor="#fff"
                                                 fgColor="#000"
@@ -88,7 +89,7 @@ export default function Lobby() {
 
                                         <button
                                             className="btn btn-primary w-100"
-                                            onClick={() => navigator.clipboard.writeText(('ABCD1234'))}
+                                            onClick={() => navigator.clipboard.writeText(quizCode)}
                                         >
                                             📋 Copy Code
                                         </button>
@@ -146,9 +147,16 @@ export default function Lobby() {
                             </div>
 
                             <div className="text-center mt-4">
-                                <button className="btn btn-success btn-lg px-5">
-                                    Start Quiz
-                                </button>
+                                
+                                    <button
+                                        className="glass-flow-btn bg-primary d-inline-flex align-items-center overflow-hidden text-decoration-none border-0 rounded-2 p-3 fw-bold"
+                                        onClick={() => navigate('/quiz') }
+                                    >
+                                        <span className="text-center text-white w-100   fw-semibold ">
+                                            Start Quiz !
+                                        </span>
+                                    </button>
+                                
                             </div>
 
                         </div>
