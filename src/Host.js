@@ -126,7 +126,7 @@ function Host() {
             const generatedQuestions =
                 await generateQuiz(topic, numQ);
 
-            navigate("/quiz", {
+            navigate("/lobby", {
                 state: {
                     hostName: name,
                     topic,
@@ -181,7 +181,7 @@ function Host() {
                 }
             }
 
-            navigate("/quiz", {
+            navigate("/lobby", {
                 state: {
                     hostName: name,
                     topic: "Custom Quiz",

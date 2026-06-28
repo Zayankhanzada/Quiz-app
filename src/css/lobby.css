@@ -1,0 +1,56 @@
+.participant-page{
+    position: relative;
+    z-index: 2;
+}
+
+.lobby-card{
+    background: rgba(20,20,35,.45);
+    backdrop-filter: blur(14px);
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,.15);
+}
+
+.glass-card{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:15px;
+    padding:25px;
+}
+
+.code-box{
+    letter-spacing:5px;
+    padding:18px;
+    border-radius:10px;
+}
+
+.participant-list{
+    max-height:420px;
+    overflow-y:auto;
+    padding-right:8px;
+}
+
+.participant-item{
+    background:rgba(255,255,255,.08);
+    color:white;
+    padding:14px;
+    border-radius:10px;
+    margin-bottom:10px;
+    transition:.25s;
+}
+
+.participant-item:hover{
+    background:rgba(255,255,255,.15);
+}
+
+.participant-list::-webkit-scrollbar{
+    width:8px;
+}
+
+.participant-list::-webkit-scrollbar-thumb{
+    background:#5b8cff;
+    border-radius:20px;
+}
+
+.participant-list::-webkit-scrollbar-track{
+    background:transparent;
+}
