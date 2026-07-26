@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {  useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import QRCode from "react-qr-code";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/start.css"
@@ -10,7 +10,7 @@ import "./css/lobby.css"
 
 
 export default function Lobby() {
-  const navigate =useNavigate();
+    const navigate = useNavigate();
     const location = useLocation()
     // for the space background
     useEffect(() => {
@@ -147,16 +147,16 @@ export default function Lobby() {
                             </div>
 
                             <div className="text-center mt-4">
-                                
-                                    <button
-                                        className="glass-flow-btn bg-primary d-inline-flex align-items-center overflow-hidden text-decoration-none border-0 rounded-2 p-3 fw-bold"
-                                        onClick={() => navigate('/quiz') }
-                                    >
-                                        <span className="text-center text-white w-100   fw-semibold ">
-                                            Start Quiz !
-                                        </span>
-                                    </button>
-                                
+
+                                <button
+                                    className="btn btn-primary  bg-primary border-0 rounded-2 p-3 fw-bold"
+                                    onClick={() => navigate('/quiz')}
+                                >
+                                    <span className="text-center text-white w-100   fw-semibold ">
+                                        Start Quiz !
+                                    </span>
+                                </button>
+
                             </div>
 
                         </div>

@@ -3,15 +3,20 @@ import "./App.css";
 import "./css/host.css"
 import { useLocation, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeftShort } from "react-bootstrap-icons";
-import { generateQuiz } from "./GeminiService";
+import {  generateQuiz } from "./GemeniService";
 
 
 
 function Host() {
+    // console.log(process.env.REACT_APP_GEMINI_API_KEY);
+
+
     // All Declearation of Component
     // Host setup Declearation
     const [mode, setMode] = useState("ai");
     const [numQ, setNumQ] = useState(3);
+    const [difficulty, setDifficulty] = useState(1);
+    const levels = ["Easy", "Medium", "Hard"];
     const [name, setName] = useState("");
     const [topic, setTopic] = useState("");
     const [loading, setLoading] = useState(false);
@@ -109,10 +114,6 @@ function Host() {
         setQuestions(updated);
     }
 
-    // function onStart() {
-    //     console.log("your quiz in process")
-
-    // }
     async function fetchAIQuestions() {
         if (!topic.trim()) {
             setErr("Enter a quiz topic");
@@ -123,9 +124,11 @@ function Host() {
             setLoading(true);
             setErr("");
 
-            const generatedQuestions =
-                await generateQuiz(topic, numQ);
-
+            const generatedQuestions = await generateQuiz(
+                topic,
+                numQ,
+                levels[difficulty - 1]
+            );
             navigate("/lobby", {
                 state: {
                     hostName: name,
@@ -199,6 +202,7 @@ function Host() {
 
     return (
         <>
+
             <div className="stars" id="stars"></div>
             <div className="container d-flex justify-content-center flex-column p-lg-5 p-3 m-lg-5 m-0">
                 <div className='align-items-start'>
@@ -280,6 +284,7 @@ function Host() {
                                             />
 
                                             <div className="mt-3">
+                                                {/* Number of Questions */}
                                                 <label className="fs-6 text-secondary mb-2 d-block">
                                                     NUMBER OF QUESTIONS —
                                                     <strong className="text-primary"> {numQ}</strong>
@@ -289,12 +294,36 @@ function Host() {
                                                     type="range"
                                                     min={3}
                                                     max={10}
-                                                    value={numQ}
                                                     step={1}
+                                                    value={numQ}
                                                     className="w-100"
-                                                    onChange={e => setNumQ(+e.target.value)}
+                                                    onChange={(e) => setNumQ(Number(e.target.value))}
                                                 />
+
+                                                {/* Difficulty Level */}
+                                                <label className="fs-6 text-secondary mb-2 d-block mt-3">
+                                                    PROFICIENCY LEVEL —
+                                                    <strong className="text-primary"> {levels[difficulty - 1]}</strong>
+                                                </label>
+
+                                                <input
+                                                    type="range"
+                                                    min={1}
+                                                    max={3}
+                                                    step={1}
+                                                    value={difficulty}
+                                                    className="w-100"
+                                                    onChange={(e) => setDifficulty(Number(e.target.value))}
+                                                />
+
+                                                {/* Optional labels under slider */}
+                                                <div className="d-flex justify-content-between text-muted small mt-1">
+                                                    <span>Easy</span>
+                                                    <span>Medium</span>
+                                                    <span>Hard</span>
+                                                </div>
                                             </div>
+
                                         </>
                                     ) : (
                                         <>

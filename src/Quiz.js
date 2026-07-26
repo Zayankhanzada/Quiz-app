@@ -8,6 +8,8 @@ import "./css/quiz.css";
 function JoinQuiz() {
   const navigate = useNavigate();
   const [quizCode, setQuizCode] = useState("");
+  const [playerName, setPlayerName] = useState("");
+  const isFormValid = quizCode.length === 6 && playerName.trim().length > 0;
   const handleJoin = () => {
     if (!quizCode.trim()) {
       alert("Please enter the quiz code.");
@@ -50,8 +52,8 @@ function JoinQuiz() {
     }
   }, [location.pathname]);
 
-
-
+console.log(process.env);
+console.log(process.env.REACT_APP_GEMINI_API_KEY);
 
   return (
     <>
@@ -83,12 +85,29 @@ function JoinQuiz() {
 
               <input
                 type="text"
-                className={`fw-mono text-center code form-control form-control-lg ${quizCode.length === 6 ? "quiz-code-valid" : " border-1 border-dark"
+                maxLength={6}
+                className={`fw-mono text-center code form-control form-control-lg border-2 ${quizCode.length === 6
+                  ? "border border-success"
+                  : "border border-dark"
                   }`}
-
                 placeholder="Enter 6 digit quiz code"
                 value={quizCode}
                 onChange={(e) => setQuizCode(e.target.value)}
+              />
+
+              <label className="form-label quiz-code-label text-white fw-bold mt-3">
+                Enter Your Name
+              </label>
+
+              <input
+                type="text"
+                className={`fw-mono text-center code form-control form-control-lg border-2 ${playerName.trim().length > 0
+                  ? "border border-success"
+                  : "border border-dark"
+                  }`}
+                placeholder="Enter Your Name!"
+                value={playerName}
+                onChange={(e) => setPlayerName(e.target.value)}
               />
             </div>
 
@@ -110,11 +129,13 @@ function JoinQuiz() {
             {/* Button */}
             <div className="d-grid">
               <button
-                className="glass-flow-btn d-inline-flex align-items-center overflow-hidden text-decoration-none border-0 rounded-2 p-3 fw-bold"
+                className={`glass-flow-btn d-inline-flex align-items-center overflow-hidden text-decoration-none border-0 rounded-3 p-3 fw-bold w-100 shadow-sm fs-5 ${isFormValid ? "active bg-success text-white" : "bg-secondary bg-opacity-25 text-white-50"
+                  }`}
                 onClick={handleJoin}
+                disabled={!isFormValid}
               >
-                <span className="text-center text-white w-100  fw-semibold ">
-                  Got The Instructions !
+                <span className="text-center text-white w-100 fw-semibold">
+                  Got The Instructions!
                 </span>
               </button>
             </div>
