@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.fw-mono{
+  font-family: "Cascadia Mono", sans-serif!important;
+}
+/* colors and backgorunds */
+.bg-primary{
+  background: #6366F1!important;
+}
