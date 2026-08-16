@@ -1,8 +1,14 @@
 import { GoogleGenAI } from "@google/genai";
 
+<<<<<<< HEAD
 // export const ai = new GoogleGenAI({
 //     apiKey: process.env.REACT_APP_GEMINI_API_KEY,
 // });
+=======
+export const ai = new GoogleGenAI({
+    apiKey: process.env.REACT_APP_GEMINI_API_KEY,
+});
+>>>>>>> origin/master
 
 export async function generateQuiz(topic, numQ, difficulty) {
 
