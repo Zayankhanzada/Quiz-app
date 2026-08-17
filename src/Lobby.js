@@ -4,8 +4,7 @@ import QRCode from "react-qr-code";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/start.css"
 import "./App.css";
-import "./css/lobby.css"
-
+import "./css/lobby.css";
 
 
 
@@ -47,8 +46,20 @@ export default function Lobby() {
     const generateQuizCode = () => {
         return Math.floor(100000 + Math.random() * 900000).toString();
     };
-
     const [quizCode] = useState(generateQuizCode);
+    const { hostName, topic, questions } = location.state;
+
+
+    function startQuiz() {
+        navigate("/quiz", {
+            state: {
+                hostName,
+                topic,
+                questions,
+            },
+        });
+    }
+
     return (
         <>
             <div id="stars"></div>
@@ -150,7 +161,7 @@ export default function Lobby() {
 
                                 <button
                                     className="btn btn-primary  bg-primary border-0 rounded-2 p-3 fw-bold"
-                                    onClick={() => navigate('/quiz')}
+                                    onClick={startQuiz}
                                 >
                                     <span className="text-center text-white w-100   fw-semibold ">
                                         Start Quiz !
