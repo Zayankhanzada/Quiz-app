@@ -3,13 +3,13 @@ import "./App.css";
 import "./css/host.css"
 import { useLocation, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeftShort } from "react-bootstrap-icons";
-// import { generateQuiz } from "./GemeniService";
+import { generateQuiz } from "./GemeniService";
 
 
 
 function Host() {
-    // console.log(process.env.REACT_APP_GEMINI_API_KEY);
-    // 
+    console.log(process.env.REACT_APP_GEMINI_API_KEY);
+    
 
     // All Declearation of Component
     // Host setup Declearation

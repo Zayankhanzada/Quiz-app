@@ -1,19 +1,12 @@
 import logo from "./images/newlogo2.png";
 import { Routes, Route, Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
 import Quiz from "./Quiz";
 import Quizstart from "./Quizstart";
 import Host from "./Host";
 import Lobby from "./Lobby";
-<<<<<<< HEAD
 import { Error } from "./Error";
 import { Leaderboard } from "./Leaderboard";
-=======
->>>>>>> origin/master
 
 function App() {
   const location = useLocation();
@@ -50,6 +43,13 @@ function App() {
     }
   }, [location.pathname]);
 
+  // async function testQuiz() {
+  //   const questions = await generateQuiz("JavaScript", 5, "easy", "explanation");
+
+  //   console.log("Quiz Response:", questions);
+  // }
+
+  // testQuiz();
   return (
 
     <Routes>
@@ -72,11 +72,7 @@ function App() {
 
 
 
-<<<<<<< HEAD
                   <Link to="/host" className="createbtn d-flex align-items-center rounded-pill lh-1 border-0 overflow-hidden text-nowrap fw-semibold text-decoration-none py-3 px-4 gap-3 text-white" >
-=======
-                  <Link to="/host" href="#" className="createbtn d-flex align-items-center rounded-pill lh-1 border-0 overflow-hidden text-nowrap fw-semibold text-decoration-none py-3 px-4 gap-3 text-white" >
->>>>>>> origin/master
                     <span className="createbtn-icon-wrapper d-grid position-relative flex-shrink-0 bg-white overflow-hidden">
                       <svg
                         viewBox="0 0 14 15"
@@ -144,14 +140,10 @@ function App() {
       <Route path="/instructions" element={<Quiz />} />
       <Route path="/quiz" element={<Quizstart />} />
       <Route path="/lobby" element={<Lobby />} />
-<<<<<<< HEAD
       <Route path="/error" element={<Error />} />
       <Route path="/leaderboard" element={<Leaderboard />} />
-      
-=======
->>>>>>> origin/master
-    </Routes>
 
+    </Routes>
   );
 }
 
